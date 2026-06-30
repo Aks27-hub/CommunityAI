@@ -1,132 +1,84 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>City Champion | Community Verification</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "primary": "#000000",
-                        "on-secondary": "#ffffff",
-                        "surface-container-highest": "#e0e3e5",
-                        "surface-container": "#eceef0",
-                        "on-primary-fixed-variant": "#3f465c",
-                        "inverse-surface": "#2d3133",
-                        "on-tertiary": "#ffffff",
-                        "on-background": "#191c1e",
-                        "on-secondary-container": "#00714d",
-                        "primary-container": "#131b2e",
-                        "surface-dim": "#d8dadc",
-                        "on-surface-variant": "#45464d",
-                        "on-error-container": "#93000a",
-                        "tertiary-container": "#2a1700",
-                        "on-tertiary-fixed": "#2a1700",
-                        "primary-fixed": "#dae2fd",
-                        "error": "#ba1a1a",
-                        "tertiary": "#000000",
-                        "surface-bright": "#f7f9fb",
-                        "inverse-primary": "#bec6e0",
-                        "on-tertiary-fixed-variant": "#653e00",
-                        "secondary-fixed": "#6ffbbe",
-                        "on-error": "#ffffff",
-                        "surface": "#f7f9fb",
-                        "surface-container-lowest": "#ffffff",
-                        "on-primary-container": "#7c839b",
-                        "tertiary-fixed-dim": "#ffb95f",
-                        "on-primary": "#ffffff",
-                        "on-secondary-fixed": "#002113",
-                        "outline-variant": "#c6c6cd",
-                        "surface-container-low": "#f2f4f6",
-                        "tertiary-fixed": "#ffddb8",
-                        "secondary": "#006c49",
-                        "inverse-on-surface": "#eff1f3",
-                        "surface-variant": "#e0e3e5",
-                        "on-primary-fixed": "#131b2e",
-                        "surface-container-high": "#e6e8ea",
-                        "outline": "#76777d",
-                        "on-surface": "#191c1e",
-                        "secondary-container": "#6cf8bb",
-                        "error-container": "#ffdad6",
-                        "surface-tint": "#565e74",
-                        "background": "#f7f9fb",
-                        "primary-fixed-dim": "#bec6e0",
-                        "secondary-fixed-dim": "#4edea3",
-                        "on-tertiary-container": "#b87500",
-                        "on-secondary-fixed-variant": "#005236"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "gutter": "20px",
-                        "sm": "16px",
-                        "base": "4px",
-                        "lg": "48px",
-                        "margin-desktop": "64px",
-                        "margin-mobile": "16px",
-                        "xl": "80px",
-                        "xs": "8px",
-                        "md": "24px"
-                    },
-                    "fontFamily": {
-                        "label-caps": ["Inter"],
-                        "headline-lg-mobile": ["Inter"],
-                        "label-md": ["Inter"],
-                        "headline-lg": ["Inter"],
-                        "headline-md": ["Inter"],
-                        "headline-xl": ["Inter"],
-                        "body-lg": ["Inter"],
-                        "body-md": ["Inter"]
-                    },
-                    "fontSize": {
-                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
-                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
-                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "500"}],
-                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
-                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "0em", "fontWeight": "600"}],
-                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                        "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "400"}],
-                        "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}]
-                    }
-                }
-            }
-        }
-    </script>
-<style>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>City Champion | Community Verification</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f7f9fb;
-            color: #191c1e;
+            background-color: #070b13;
+            color: #f8fafc;
         }
         .glass-layer {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(13, 20, 35, 0.65);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
         .elevation-2 {
-            box-shadow: 0px 20px 40px rgba(15, 23, 42, 0.08), 0px 4px 8px rgba(15, 23, 42, 0.04);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.15);
         }
         .achievement-card {
             border: 2px solid transparent;
-            background-image: linear-gradient(white, white), linear-gradient(to right, #006c49, #6cf8bb);
+            background-image: linear-gradient(#0f172a, #0f172a), linear-gradient(to right, #10b981, #6cf8bb);
             background-origin: border-box;
             background-clip: padding-box, border-box;
         }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
+        .ai-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
     </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#6cf8bb",
+                        "on-primary": "#042f1a",
+                        "primary-container": "#0c2b1e",
+                        "on-primary-container": "#6cf8bb",
+                        "secondary": "#10b981",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#064e3b",
+                        "on-secondary-container": "#a7f3d0",
+                        "tertiary": "#38bdf8",
+                        "on-tertiary": "#0369a1",
+                        "background": "#070b13",
+                        "on-background": "#f8fafc",
+                        "surface": "#0d1425",
+                        "on-surface": "#f8fafc",
+                        "surface-variant": "#1e293b",
+                        "on-surface-variant": "#94a3b8",
+                        "surface-container-lowest": "#030712",
+                        "surface-container-low": "#0b1220",
+                        "surface-container": "#0f172a",
+                        "surface-container-high": "#1e293b",
+                        "surface-container-highest": "#334155",
+                        "outline": "#334155",
+                        "outline-variant": "#1e293b",
+                        "inverse-surface": "#f8fafc",
+                        "inverse-on-surface": "#070b13",
+                        "error": "#ef4444",
+                        "on-error": "#ffffff",
+                        "error-container": "#7f1d1d",
+                        "on-error-container": "#fca5a5"
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 <body class="bg-background text-on-background overflow-x-hidden">
 <!-- Top Navigation Bar -->
@@ -136,200 +88,150 @@
 </div>
 <div class="flex items-center gap-6">
 <div class="hidden md:flex items-center gap-6 text-on-surface-variant font-label-md">
-<span class="material-symbols-outlined cursor-pointer hover:bg-surface-container-highest/50 p-2 rounded-full transition-colors" data-icon="military_tech">military_tech</span>
-<span class="material-symbols-outlined cursor-pointer hover:bg-surface-container-highest/50 p-2 rounded-full transition-colors" data-icon="bolt">bolt</span>
-<span class="material-symbols-outlined cursor-pointer hover:bg-surface-container-highest/50 p-2 rounded-full transition-colors" data-icon="workspace_premium">workspace_premium</span>
+<span class="material-symbols-outlined cursor-pointer hover:bg-surface-container-highest/50 p-2 rounded-full transition-colors">military_tech</span>
+<span class="material-symbols-outlined cursor-pointer hover:bg-surface-container-highest/50 p-2 rounded-full transition-colors">bolt</span>
+<span class="material-symbols-outlined cursor-pointer hover:bg-surface-container-highest/50 p-2 rounded-full transition-colors">workspace_premium</span>
 </div>
 <div class="h-10 w-10 rounded-full overflow-hidden border-2 border-primary-container">
-<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a modern urban citizen in their early 30s, looking friendly and engaged. The lighting is soft and cinematic, with a clean architectural background that reflects a modern smart city environment. High-quality digital photography with a crisp, premium feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYmHLvc4o6h-iOhPw8q-xk-n2w0gE9_ARpnrwlRuJXdcOMnrbfwnDCCD5DhWU-VT0yuDYvyIaAlSWnPSCqPCBohwKvzQ6DtbQYQgYOyebnV9dBXdI05M_S9kUcCy8H1OjhPVB6cu2vP1sXoSQHQng0M_JGSl2G0IpM9H0I2upbUsqym_im52pPhIM88MBKvvgn80LlE12ZbdBsb2cjgoyihJQkClz18JG7Cbp6Fj2v88nQz1l0A88c3c2uAfGcRre2PExjhZQ1iBs"/>
+<img data-user-avatar class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYmHLvc4o6h-iOhPw8q-xk-n2w0gE9_ARpnrwlRuJXdcOMnrbfwnDCCD5DhWU-VT0yuDYvyIaAlSWnPSCqPCBohwKvzQ6DtbQYQgYOyebnV9dBXdI05M_S9kUcCy8H1OjhPVB6cu2vP1sXoSQHQng0M_JGSl2G0IpM9H0I2upbUsqym_im52pPhIM88MBKvvgn80LlE12ZbdBsb2cjgoyihJQkClz18JG7Cbp6Fj2v88nQz1l0A88c3c2uAfGcRre2PExjhZQ1iBs"/>
 </div>
 </div>
 </header>
+
 <!-- Sidebar (Desktop) -->
 <aside class="hidden lg:flex flex-col fixed left-0 top-0 h-full w-64 bg-surface/80 backdrop-blur-xl border-r border-white/10 p-4 gap-2 pt-20 z-40">
-<div class="px-4 mb-6">
-<h2 class="font-headline-sm text-headline-sm font-black text-primary">City Champion</h2>
-<p class="text-on-surface-variant font-label-md">Civic Guardian Level 12</p>
-</div>
-<nav class="flex flex-col gap-1">
-<a 
-href="city_center.html"
-class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 hover:bg-surface-container-high/50 transition-all rounded-xl group" href="#">
-<span class="material-symbols-outlined" data-icon="home">home</span>
-<span class="font-label-md">Home</span>
-</a>
-<a 
-href="report.html"
-class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 hover:bg-surface-container-high/50 transition-all rounded-xl group" href="#">
-<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
-<span class="font-label-md">Report</span>
-</a>
-<a 
-href="verify.html"
-class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-xl px-4 py-3 shadow-md" href="#">
-<span class="material-symbols-outlined" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
-<span class="font-label-md">Community</span>
-</a>
-<a 
-href="track.html"
-class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 hover:bg-surface-container-high/50 transition-all rounded-xl group" href="#">
-<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
-<span class="font-label-md">Tracking</span>
-</a>
-<a 
-href="profile.html"
-class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 hover:bg-surface-container-high/50 transition-all rounded-xl group" href="#">
-<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
-<span class="font-label-md">Profile</span>
-</a>
-</nav>
-<div class="mt-auto flex flex-col gap-1">
-<button class="bg-primary text-on-primary font-label-md py-3 rounded-xl mb-4 shadow-lg hover:scale-[1.02] transition-transform">New Report</button>
-<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-2 hover:bg-surface-container-high/50 transition-all rounded-xl" href="#">
-<span class="material-symbols-outlined" data-icon="settings">settings</span>
-<span class="font-label-md">Settings</span>
-</a>
-<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-2 hover:bg-surface-container-high/50 transition-all rounded-xl" href="#">
-<span class="material-symbols-outlined" data-icon="help">help</span>
-<span class="font-label-md">Help</span>
-</a>
-</div>
+    <div class="px-4 mb-6">
+        <h2 class="font-headline-sm text-headline-sm font-black text-primary">City Champion</h2>
+        <p class="text-on-surface-variant font-label-md" data-user-level>Civic Guardian Level 0</p>
+    </div>
+    <nav class="flex flex-col gap-1">
+        <a href="city_center.html" class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 hover:bg-surface-container-high/50 transition-all rounded-xl">
+            <span class="material-symbols-outlined">home</span>
+            <span class="font-label-md">Home</span>
+        </a>
+        <a href="report.html" class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 hover:bg-surface-container-high/50 transition-all rounded-xl">
+            <span class="material-symbols-outlined">add_circle</span>
+            <span class="font-label-md">Report</span>
+        </a>
+        <a href="verify.html" class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-xl px-4 py-3 shadow-md">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+            <span class="font-label-md font-bold">Community</span>
+        </a>
+        <a href="track.html" class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 hover:bg-surface-container-high/50 transition-all rounded-xl">
+            <span class="material-symbols-outlined">analytics</span>
+            <span class="font-label-md">Tracking</span>
+        </a>
+        <a href="profile.html" class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 hover:bg-surface-container-high/50 transition-all rounded-xl">
+            <span class="material-symbols-outlined">account_circle</span>
+            <span class="font-label-md">Profile</span>
+        </a>
+    </nav>
 </aside>
+
 <!-- Main Content Canvas -->
 <main class="lg:ml-64 pt-24 pb-24 px-4 md:px-8 max-w-7xl mx-auto grid grid-cols-1 xl:grid-cols-12 gap-8">
-<!-- Verification Feed (Center Column) -->
-<div class="xl:col-span-8 flex flex-col gap-6">
-<header class="flex justify-between items-end mb-2">
-<div>
-<h1 class="font-headline-lg text-headline-lg">Verification Feed</h1>
-<p class="text-on-surface-variant font-body-md">Help validate active issues in your area.</p>
-</div>
-<div class="flex gap-2">
-<button class="flex items-center gap-2 bg-surface-container px-4 py-2 rounded-full font-label-md border border-outline-variant">
-<span class="material-symbols-outlined text-[18px]" data-icon="filter_list">filter_list</span>
-                        Nearby
-                    </button>
-</div>
-</header>
-<!-- Verification Feed Container -->
-<div id="verificationFeed" class="flex flex-col gap-6">
-<!-- Dynamic cards will be rendered here -->
-</div>
-<!-- Gamification Sidebar (Right Column) -->
-<div class="xl:col-span-4 flex flex-col gap-6">
-<!-- Profile Hub -->
-<div class="achievement-card rounded-[2rem] p-6 elevation-2 flex flex-col items-center text-center">
-<div class="relative mb-4">
-<div class="w-24 h-24 rounded-full border-4 border-secondary p-1">
-<img data-user-avatar class="w-full h-full rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSF8i-htvQlJa0PfNG0Pj36wBGzIUH6zP6Q8Q-wxfOMUr8oJq2Q74mycX_CJC-8844tbcjoyX93-X2Oo1Fvoq_U_ARaexEYaf9k_LcF6hGotdVWdx1uHeBTrLOSKayImPSIZe8EMGRrZ0URuMvw8ZvLenvrmPsvOW6PJK1A2nnZqwuE0ezt5qqJcYBrb38MHdBoekKEQMzDCHM8EYKNod1dKRIrsh5ZXrtECdmnH-nGU2DhTOs5v_eVgqlS-HgQ7JLGHfZZzWPobM"/>
-</div>
-<div data-user-level-badge class="absolute -bottom-2 -right-2 bg-secondary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shadow-md">12</div>
-</div>
-<h2 id="verify-level-text" class="font-headline-md text-headline-md">Community Level 12</h2>
-<p id="verify-xp-text" class="text-on-surface-variant font-label-md mb-6">Master Guardian • 2,450 XP</p>
-<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden mb-2">
-<div id="verify-xp-bar" class="bg-secondary h-full transition-all duration-1000" style="width: 75%;"></div>
-</div>
-<div class="flex justify-between w-full text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">
-<span id="verify-lvl-label-1">Level 12</span>
-<span id="verify-lvl-label-2">750 XP to Level 13</span>
-</div>
-</div>
-<!-- Recent Badges -->
-<div class="glass-layer elevation-2 rounded-[2rem] p-6">
-<h3 class="font-label-md font-bold mb-4 uppercase tracking-widest text-on-surface-variant">Recent Achievements</h3>
-<div class="grid grid-cols-3 gap-4">
-<div class="flex flex-col items-center gap-2">
-<div class="w-16 h-16 rounded-2xl bg-secondary-container flex items-center justify-center text-on-secondary-container shadow-sm border border-secondary/20">
-<span class="material-symbols-outlined text-[32px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
-</div>
-<span class="text-[10px] font-bold leading-tight">Fast Verifier</span>
-</div>
-<div class="flex flex-col items-center gap-2">
-<div class="w-16 h-16 rounded-2xl bg-primary-container flex items-center justify-center text-on-primary-fixed shadow-sm border border-white/10">
-<span class="material-symbols-outlined text-[32px]" data-icon="nightlight" style="font-variation-settings: 'FILL' 1;">nightlight</span>
-</div>
-<span class="text-[10px] font-bold leading-tight">Night Owl</span>
-</div>
-<div class="flex flex-col items-center gap-2">
-<div class="w-16 h-16 rounded-2xl bg-tertiary-container flex items-center justify-center text-tertiary-fixed shadow-sm border border-white/10">
-<span class="material-symbols-outlined text-[32px]" data-icon="shield" style="font-variation-settings: 'FILL' 1;">shield</span>
-</div>
-<span class="text-[10px] font-bold leading-tight">Protector</span>
-</div>
-</div>
-<button class="w-full mt-6 py-3 border border-outline-variant rounded-xl font-label-md hover:bg-surface-container transition-colors">View All Badges</button>
-</div>
-<!-- Community Leaderboard Snippet -->
-<div class="glass-layer elevation-2 rounded-[2rem] p-6 overflow-hidden">
-<h3 class="font-label-md font-bold mb-4 uppercase tracking-widest text-on-surface-variant">Top Contributors</h3>
-<div class="space-y-4">
-<div class="flex items-center gap-3">
-<div class="text-label-md font-black text-secondary w-4">1</div>
-<div class="w-8 h-8 rounded-full bg-surface-container overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="Portrait of a young man, professional urban style, profile avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByYzDy7H-4EQunjalcVwcQg9MQIhKIiz1JhwSLZWghFhM_bqWr6-5i-_p5P-zxFYGtr5S8lsH8ML6mUr8_fH-a7GqcknG042KMuaNQTkAM8DOpFIooe6vrDW4A0b2M91ER26JPLMu4O9RB1F1Vm4gOyKTCXYit4M1W4ZMdRP1JEH_vLediWHCdaqGetGNFK5d-p8zjeK8X9jK0iRd5OQNJ8PUVrlMM-cLZiEGkxDDpQUadulFztsQhjEX4lbzOcbjrokt4uZgt1fA"/>
-</div>
-<div class="flex-1">
-<p class="text-label-md font-bold leading-none">Marcus J.</p>
-<p class="text-[10px] text-on-surface-variant">1,240 pts this week</p>
-</div>
-<span class="material-symbols-outlined text-secondary text-[16px]" data-icon="trending_up">trending_up</span>
-</div>
-<div class="flex items-center gap-3">
-<div class="text-label-md font-black text-on-surface-variant w-4">2</div>
-<div class="w-8 h-8 rounded-full bg-surface-container overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="Portrait of a diverse woman, professional urban style, profile avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKVWdqAkUmwZwkCj5aNsgCREM2g0nk4qV9Fr5EvOZlf5CHugOj4blErKJ75rd7ivnt_nXQcA0gHax0V6_VZTFwDpHOBR9V5gONFGxN1uz-d2Y_yN798dGeN9tULVglUPMwY5s8KKWDjIFWpLDogafcP45dLjKu-B3_8N1ZPYc7WwFftLBhbZOJHcmKS6DtN8KLyb4CaBDJBPVK5HZE61YCnoZemjmt4wFi7Sq1iZnp51uLI9-yE-cyIT-9QP1L0KZ_pBntsBgg7JU"/>
-</div>
-<div class="flex-1">
-<p class="text-label-md font-bold leading-none">Sarah Chen</p>
-<p class="text-[10px] text-on-surface-variant">1,100 pts this week</p>
-</div>
-<span class="material-symbols-outlined text-secondary text-[16px]" data-icon="trending_up">trending_up</span>
-</div>
-<div class="flex items-center gap-3 opacity-60">
-<div class="text-label-md font-black text-on-surface-variant w-4">14</div>
-<div class="w-8 h-8 rounded-full bg-surface-container overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="Portrait of the user, friendly urban style, profile avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk4G9fBzYGsN8ZUVvaPCssnH3AR6af8W89NCGiFPKqa9LDujkgvkd2L15kuqAojRkPUMJhpDc6o4GSmWjTWz0qCQhnaOm1LfpyKcKZQ4YawWMRpfIp6Y0Z8dfNasO3HKg9vL1utut2YYMK5deu--BzCtA76E3R__oYTWUFxtf_Sl2P9tQVZoThpfn_2ZcN_EtTif1ygl4jo8cd5V9GyRjgBqVrdJyFkA-x7v7HVAW8bMR5E7oyetCMfjhSX4Syg_bclKasod1KW8Y"/>
-</div>
-<div class="flex-1">
-<p class="text-label-md font-bold leading-none">You</p>
-<p class="text-[10px] text-on-surface-variant">450 pts this week</p>
-</div>
-</div>
-</div>
-</div>
-</div>
+    <!-- Verification Feed (Center Column) -->
+    <div class="xl:col-span-8 flex flex-col gap-6">
+        <header class="flex justify-between items-end mb-2">
+            <div>
+                <h1 class="text-3xl font-extrabold tracking-tight">Verification Feed</h1>
+                <p class="text-on-surface-variant font-body-md">Help validate active issues in your area.</p>
+            </div>
+            <div class="flex gap-2">
+                <button class="flex items-center gap-2 bg-surface-container px-4 py-2 rounded-full font-label-md border border-outline-variant">
+                    <span class="material-symbols-outlined text-[18px]">filter_list</span>
+                    Nearby
+                </button>
+            </div>
+        </header>
+
+        <!-- Verification Feed Container -->
+        <div id="verificationFeed" class="flex flex-col gap-6">
+            <!-- Dynamic cards will be rendered here -->
+        </div>
+    </div>
+
+    <!-- Gamification Sidebar (Right Column) -->
+    <div class="xl:col-span-4 flex flex-col gap-6">
+        <!-- Profile Hub -->
+        <div class="achievement-card rounded-[2rem] p-6 elevation-2 flex flex-col items-center text-center bg-white">
+            <div class="relative mb-4">
+                <div class="w-24 h-24 rounded-full border-4 border-secondary p-1">
+                    <img data-user-avatar class="w-full h-full rounded-full object-cover" src=""/>
+                </div>
+                <div data-user-level-badge class="absolute -bottom-2 -right-2 bg-secondary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shadow-md">0</div>
+            </div>
+            <h2 id="verify-level-text" class="text-xl font-bold">Community Level 0</h2>
+            <p id="verify-xp-text" class="text-on-surface-variant font-label-md mb-6">Guardian Trainee • 0 XP</p>
+            
+            <div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden mb-2">
+                <div id="verify-xp-bar" class="bg-secondary h-full transition-all duration-1000" style="width: 0%;"></div>
+            </div>
+            <div class="flex justify-between w-full text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">
+                <span id="verify-lvl-label-1">Level 0</span>
+                <span id="verify-lvl-label-2">1,000 XP to Level 1</span>
+            </div>
+        </div>
+
+        <!-- Recent Badges -->
+        <div class="glass-layer elevation-2 rounded-[2rem] p-6 bg-white/50">
+            <h3 class="font-label-caps text-[10px] tracking-wider font-bold mb-4 uppercase text-on-surface-variant">Unlocked Achievements</h3>
+            <div class="grid grid-cols-3 gap-4" id="badges-container">
+                <div class="flex flex-col items-center gap-2 opacity-50">
+                    <div class="w-16 h-16 rounded-2xl bg-surface-container flex items-center justify-center text-on-surface-variant shadow-sm border">
+                        <span class="material-symbols-outlined text-[32px]">verified</span>
+                    </div>
+                    <span class="text-[10px] font-bold leading-tight">Fast Verifier</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 opacity-50">
+                    <div class="w-16 h-16 rounded-2xl bg-surface-container flex items-center justify-center text-on-surface-variant shadow-sm border">
+                        <span class="material-symbols-outlined text-[32px]">nightlight</span>
+                    </div>
+                    <span class="text-[10px] font-bold leading-tight">Night Owl</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 opacity-50">
+                    <div class="w-16 h-16 rounded-2xl bg-surface-container flex items-center justify-center text-on-surface-variant shadow-sm border">
+                        <span class="material-symbols-outlined text-[32px]">shield</span>
+                    </div>
+                    <span class="text-[10px] font-bold leading-tight">Protector</span>
+                </div>
+            </div>
+            <button class="w-full mt-6 py-3 border border-outline-variant rounded-xl font-label-md hover:bg-surface-container transition-colors" onclick="window.location.href='leaderboard.html'">View All Badges</button>
+        </div>
+    </div>
 </main>
+
 <!-- Bottom Navigation Bar (Mobile) -->
 <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 lg:hidden bg-surface/70 backdrop-blur-lg border-t border-white/10 shadow-lg rounded-t-xl">
-<a href="city_center.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
-<span class="material-symbols-outlined">home</span>
-<span class="text-[10px] font-medium">Home</span>
-</a>
-<a href="report.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
-<span class="material-symbols-outlined">add_circle</span>
-<span class="text-[10px] font-medium">Report</span>
-</a>
-<a href="verify.html" class="flex flex-col items-center justify-center text-secondary scale-110 transition-transform px-3 py-1">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
-<span class="text-[10px] font-bold">Community</span>
-</a>
-<a href="track.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
-<span class="material-symbols-outlined">analytics</span>
-<span class="text-[10px] font-medium">Tracking</span>
-</a>
-<a href="profile.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
-<span class="material-symbols-outlined">account_circle</span>
-<span class="text-[10px] font-medium">Profile</span>
-</a>
+    <a href="city_center.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+        <span class="material-symbols-outlined">home</span>
+        <span class="text-[10px] font-medium">Home</span>
+    </a>
+    <a href="report.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+        <span class="material-symbols-outlined">add_circle</span>
+        <span class="text-[10px] font-medium">Report</span>
+    </a>
+    <a href="verify.html" class="flex flex-col items-center justify-center text-secondary scale-110 transition-transform px-3 py-1">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+        <span class="text-[10px] font-bold">Community</span>
+    </a>
+    <a href="track.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+        <span class="material-symbols-outlined">analytics</span>
+        <span class="text-[10px] font-medium">Tracking</span>
+    </a>
+    <a href="profile.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+        <span class="material-symbols-outlined">account_circle</span>
+        <span class="text-[10px] font-medium">Profile</span>
+    </a>
 </nav>
+
 <!-- Evidence Details Modal -->
 <div id="evidenceModal" class="fixed inset-0 z-[10000] flex items-center justify-center bg-black/50 backdrop-blur-sm hidden">
     <div class="glass-layer max-w-lg w-full rounded-[2rem] p-8 shadow-2xl border border-white/20 mx-4 bg-white/95 relative">
         <button onclick="closeEvidenceModal()" class="absolute top-4 right-4 text-on-surface-variant hover:text-primary">
             <span class="material-symbols-outlined">close</span>
         </button>
-        <h3 id="modalTitle" class="font-headline-lg text-primary mb-2">Sidewalk Hazard</h3>
+        <h3 id="modalTitle" class="text-2xl font-bold text-primary mb-2">Sidewalk Hazard</h3>
         <p id="modalLocation" class="text-on-surface-variant text-label-md mb-4 flex items-center gap-1">
             <span class="material-symbols-outlined text-[16px]">location_on</span>
             <span id="modalLocationText">West 4th & Baker Ave</span>
@@ -344,11 +246,11 @@ class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-
             </div>
             <div class="flex justify-between border-t border-white/20 pt-4">
                 <div>
-                    <span class="text-[10px] font-black text-on-surface-variant uppercase tracking-wider block mb-1">AI Scan Confidence</span>
-                    <span id="modalConfidence" class="text-sm text-secondary font-bold">96%</span>
+                    <span class="text-[10px] font-black text-on-surface-variant uppercase tracking-wider block mb-1">AI Scan Accuracy</span>
+                    <span id="modalConfidence" class="text-sm font-bold text-secondary">94% AI Confidence</span>
                 </div>
                 <div>
-                    <span class="text-[10px] font-black text-on-surface-variant uppercase tracking-wider block mb-1">Trust Rating</span>
+                    <span class="text-[10px] font-black text-on-surface-variant uppercase tracking-wider block mb-1">Community Trust Rating</span>
                     <span id="modalTrust" class="text-sm text-primary font-bold">92%</span>
                 </div>
             </div>
@@ -358,145 +260,144 @@ class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-
 
 <script src="shared.js"></script>
 <script>
-        // Dynamic Renderer & Interactions for verify.html
-        function renderVerificationFeed(state) {
-            const feed = document.getElementById('verificationFeed');
-            // Exclude resolved cases
-            const activeIssues = state.reports.filter(r => r.status !== 'Resolved' && r.status !== 'Resolved Pending Verification');
+    function renderVerificationFeed(state) {
+        const feed = document.getElementById('verificationFeed');
+        // Exclude resolved/completed cases so we only verify active, pending issues
+        const activeIssues = state.reports.filter(r => r.status === 'Reported' || r.status === 'Verified');
 
-            feed.innerHTML = '';
-            if (activeIssues.length === 0) {
-                feed.innerHTML = `
-                    <div class="glass-layer elevation-2 rounded-[2rem] p-12 text-center flex flex-col items-center justify-center w-full">
-                        <span class="material-symbols-outlined text-5xl text-secondary mb-3">task_alt</span>
-                        <h3 class="font-headline-md text-primary">All Issues Verified!</h3>
-                        <p class="text-on-surface-variant mt-1">There are no outstanding issues in the verification pool right now.</p>
-                    </div>
-                `;
-                return;
-            }
-
-            activeIssues.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'glass-layer elevation-2 rounded-[2rem] overflow-hidden flex flex-col md:flex-row transition-all hover:scale-[1.005] group opacity-100 translate-y-0';
-                
-                const isUserReport = item.reporter === state.user.name;
-                const categoryBadge = item.category === 'Road Infrastructure' ? 'warning' : 'eco';
-                const thumbnail = item.img || "https://lh3.googleusercontent.com/aida-public/AB6AXuCLQXeyzGar9v1kQF29pvUPx2g0ufGSbyJpi7vsAOPRMhvbXddYc2c4h8aa5a6LEOehvvmNxnswqW4soaYxUD8U2DPvHgENsrN6V59jH5Iy6gRxs_f0AQoheKwp1yplxkBgF-KhtHqDe29zbSZv1JBixvmXoNWqYXtbt21nLtkdieDzXSYWfehM7dPNl8Rxp2cWXNaxaUoY2Ak2s9TX4riTLBSPZLwTVcoDP8-gcTAF4PBn8iMh2JGgzw36s0siZGCab_pwzXLeowk";
-
-                card.innerHTML = `
-                    <div class="md:w-2/5 relative h-64 md:h-auto overflow-hidden">
-                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="${thumbnail}"/>
-                        <div class="absolute top-4 left-4 bg-primary/80 backdrop-blur text-white px-3 py-1 rounded-full text-label-caps flex items-center gap-1">
-                            <span class="material-symbols-outlined text-[14px]">${categoryBadge}</span> ${item.category.toUpperCase()}
-                        </div>
-                    </div>
-                    <div class="md:w-3/5 p-6 flex flex-col">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h3 class="font-headline-md text-headline-md mb-1">${item.title}</h3>
-                                <p class="text-on-surface-variant font-label-md flex items-center gap-1">
-                                    <span class="material-symbols-outlined text-[16px]">location_on</span>
-                                    ${item.address}
-                                </p>
-                            </div>
-                            <div class="bg-secondary-container/50 text-on-secondary-container border border-secondary p-3 rounded-2xl text-center">
-                                <div class="font-bold text-headline-md leading-none">${item.trust}%</div>
-                                <div class="text-[10px] uppercase font-black tracking-widest mt-1">Trust</div>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4 mb-6">
-                            <div class="bg-surface-container p-3 rounded-2xl relative overflow-hidden h-24">
-                                <div class="absolute inset-0 opacity-40 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBso5uubSWvE4B6EyvF4IEe7zfzCYdwBJeAeZH6eMdzCq3RnQVRn_FDcUDASVhpeJQTBB1KGYdnoYrJqOD4pHVn8JV55qeR2LZXMcgByiWdJS9M4ymh9LkbuJwCGYf8YiUX7M9YRKJJKXVJ9iW72xjm23TPOwCrd5VhsVyC4_qi1TjErt0Tl_YRcmIMsACjs_Ls89KqQnApYvcOSH6VxOZSCVhBDJgtRCvQlCMumPWlA7HrvSPXqmU118QO8mFnuglNef3Iw8Bng4s')"></div>
-                                <div class="relative z-10 flex flex-col h-full justify-between">
-                                    <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">Map Snippet</span>
-                                    <span class="text-label-md font-bold">Nearby</span>
-                                </div>
-                            </div>
-                            <div class="bg-surface-container p-3 rounded-2xl relative overflow-hidden h-24">
-                                <div class="absolute inset-0 opacity-20 bg-gradient-to-tr from-secondary to-transparent"></div>
-                                <div class="relative z-10 flex flex-col h-full justify-between">
-                                    <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">Neighborhood Impact</span>
-                                    <div class="flex items-center gap-2">
-                                        <span class="material-symbols-outlined text-secondary">groups</span>
-                                        <span class="text-label-md font-bold">${item.affected}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex gap-2 mt-auto">
-                            <button onclick="confirmIssue('${item.id}')" class="flex-1 bg-secondary text-white py-3 rounded-xl font-label-md flex items-center justify-center gap-2 hover:bg-secondary/90 transition-colors">
-                                <span class="material-symbols-outlined">check_circle</span> Confirm
-                            </button>
-                            <button onclick="showEvidence('${item.id}')" class="flex-1 border border-outline text-on-surface py-3 rounded-xl font-label-md flex items-center justify-center gap-2 hover:bg-surface-container-highest/20 transition-colors">
-                                <span class="material-symbols-outlined">help</span> Evidence
-                            </button>
-                            <button onclick="flagIssue('${item.id}')" class="px-4 border border-outline text-error py-3 rounded-xl hover:bg-error/10 transition-colors">
-                                <span class="material-symbols-outlined">block</span>
-                            </button>
-                        </div>
-                    </div>
-                `;
-                feed.appendChild(card);
-            });
+        feed.innerHTML = '';
+        if (activeIssues.length === 0) {
+            feed.innerHTML = `
+                <div class="flex flex-col items-center justify-center p-12 text-center bg-white/50 rounded-3xl border-2 border-dashed border-outline-variant/30">
+                    <span class="material-symbols-outlined text-4xl text-secondary mb-2">task_alt</span>
+                    <h3 class="font-bold text-primary">All Issues Verified!</h3>
+                    <p class="text-on-surface-variant mt-1">There are no outstanding reports awaiting verification in your area.</p>
+                </div>
+            `;
+            return;
         }
 
-        function confirmIssue(id) {
-            if (window.civicController) {
-                window.civicController.verifyReport(id, true);
-            }
-        }
-
-        function flagIssue(id) {
-            if (confirm('Flag this issue as incorrect or duplicate? This reduces its community trust rating.')) {
-                if (window.civicController) {
-                    window.civicController.verifyReport(id, false);
-                }
-            }
-        }
-
-        function showEvidence(id) {
-            const state = window.civicController.state;
-            const report = state.reports.find(r => r.id === id);
-            if (report) {
-                document.getElementById('modalTitle').textContent = report.title;
-                document.getElementById('modalLocationText').textContent = report.address;
-                document.getElementById('modalImg').src = report.img || "https://lh3.googleusercontent.com/aida-public/AB6AXuCLQXeyzGar9v1kQF29pvUPx2g0ufGSbyJpi7vsAOPRMhvbXddYc2c4h8aa5a6LEOehvvmNxnswqW4soaYxUD8U2DPvHgENsrN6V59jH5Iy6gRxs_f0AQoheKwp1yplxkBgF-KhtHqDe29zbSZv1JBixvmXoNWqYXtbt21nLtkdieDzXSYWfehM7dPNl8Rxp2cWXNaxaUoY2Ak2s9TX4riTLBSPZLwTVcoDP8-gcTAF4PBn8iMh2JGgzw36s0siZGCab_pwzXLeowk";
-                document.getElementById('modalDesc').textContent = report.timeline[0].description;
-                document.getElementById('modalConfidence').textContent = `${report.trust + 4}% AI Confidence`;
-                document.getElementById('modalTrust').textContent = `${report.trust}% Community Trust`;
-                document.getElementById('evidenceModal').classList.remove('hidden');
-            }
-        }
-
-        function closeEvidenceModal() {
-            document.getElementById('evidenceModal').classList.add('hidden');
-        }
-
-        // Gamification sidebar synchronizer
-        function syncGamificationWidget(state) {
-            const user = state.user;
-            document.getElementById('verify-level-text').textContent = `Community Level ${user.level}`;
+        activeIssues.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'glass-layer elevation-2 rounded-[2rem] overflow-hidden flex flex-col md:flex-row transition-all hover:scale-[1.005] group bg-white';
             
-            const progressPercentage = (user.xp / 5000) * 100;
-            document.getElementById('verify-xp-bar').style.width = `${progressPercentage}%`;
-            document.getElementById('verify-xp-text').textContent = `Master Guardian • ${12000 + user.xp} Total XP`;
-            document.getElementById('verify-lvl-label-1').textContent = `Level ${user.level}`;
-            document.getElementById('verify-lvl-label-2').textContent = `${5000 - user.xp} XP to Level ${user.level + 1}`;
-            document.querySelectorAll('[data-user-level-badge]').forEach(badge => badge.textContent = user.level);
-        }
+            const categoryBadge = item.category === 'Road Infrastructure' ? 'warning' : 'eco';
+            const thumbnail = item.img || "https://lh3.googleusercontent.com/aida-public/AB6AXuCLQXeyzGar9v1kQF29pvUPx2g0ufGSbyJpi7vsAOPRMhvbXddYc2c4h8aa5a6LEOehvvmNxnswqW4soaYxUD8U2DPvHgENsrN6V59jH5Iy6gRxs_f0AQoheKwp1yplxkBgF-KhtHqDe29zbSZv1JBixvmXoNWqYXtbt21nLtkdieDzXSYWfehM7dPNl8Rxp2cWXNaxaUoY2Ak2s9TX4riTLBSPZLwTVcoDP8-gcTAF4PBn8iMh2JGgzw36s0siZGCab_pwzXLeowk";
 
-        // State synchronization callback
-        window.onCivicStateSync = function(state) {
-            renderVerificationFeed(state);
-            syncGamificationWidget(state);
-        };
+            card.innerHTML = `
+                <div class="md:w-2/5 relative h-64 md:h-auto overflow-hidden">
+                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="${thumbnail}"/>
+                    <div class="absolute top-4 left-4 bg-primary/80 backdrop-blur text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 uppercase tracking-wider">
+                        <span class="material-symbols-outlined text-[14px]">${categoryBadge}</span> ${item.category}
+                    </div>
+                </div>
+                <div class="md:w-3/5 p-6 flex flex-col">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-lg font-bold text-primary mb-1">${item.title}</h3>
+                            <p class="text-on-surface-variant text-xs flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[16px]">location_on</span>
+                                ${item.address}
+                            </p>
+                        </div>
+                        <div class="bg-secondary-container/50 text-on-secondary-container border border-secondary p-3 rounded-2xl text-center">
+                            <div class="font-bold text-headline-md leading-none">${item.trust}%</div>
+                            <div class="text-[10px] uppercase font-black tracking-widest mt-1">Trust</div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+                        ${item.analysis?.summary || 'Reported by community member and categorized with AI assistance.'}
+                    </p>
 
-        // Simple micro-interactions
-        document.querySelectorAll('button').forEach(button => {
-            button.addEventListener('mousedown', () => button.classList.add('scale-95'));
-            button.addEventListener('mouseup', () => button.classList.remove('scale-95'));
-            button.addEventListener('mouseleave', () => button.classList.remove('scale-95'));
+                    <div class="flex gap-2 mt-auto">
+                        <button onclick="confirmIssue('${item.id}')" class="flex-1 bg-secondary text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-secondary/90 transition-colors">
+                            <span class="material-symbols-outlined">check_circle</span> Confirm
+                        </button>
+                        <button onclick="showEvidence('${item.id}')" class="flex-1 border border-outline-variant text-on-surface py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-surface-container-highest/20 transition-colors">
+                            <span class="material-symbols-outlined">help</span> Evidence
+                        </button>
+                        <button onclick="flagIssue('${item.id}')" class="px-4 border border-outline-variant text-error py-3 rounded-xl hover:bg-error/10 transition-colors">
+                            <span class="material-symbols-outlined">block</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            feed.appendChild(card);
         });
-    </script>
-</body></html>
+    }
+
+    function confirmIssue(id) {
+        if (window.civicController) {
+            window.civicController.verifyReport(id, true);
+        }
+    }
+
+    function flagIssue(id) {
+        if (confirm('Flag this issue as incorrect or duplicate? This reduces its community trust rating.')) {
+            if (window.civicController) {
+                window.civicController.verifyReport(id, false);
+            }
+        }
+    }
+
+    function showEvidence(id) {
+        const state = window.civicController.state;
+        const report = state.reports.find(r => r.id === id);
+        if (report) {
+            document.getElementById('modalTitle').textContent = report.title;
+            document.getElementById('modalLocationText').textContent = report.address;
+            document.getElementById('modalImg').src = report.img || "https://lh3.googleusercontent.com/aida-public/AB6AXuCLQXeyzGar9v1kQF29pvUPx2g0ufGSbyJpi7vsAOPRMhvbXddYc2c4h8aa5a6LEOehvvmNxnswqW4soaYxUD8U2DPvHgENsrN6V59jH5Iy6gRxs_f0AQoheKwp1yplxkBgF-KhtHqDe29zbSZv1JBixvmXoNWqYXtbt21nLtkdieDzXSYWfehM7dPNl8Rxp2cWXNaxaUoY2Ak2s9TX4riTLBSPZLwTVcoDP8-gcTAF4PBn8iMh2JGgzw36s0siZGCab_pwzXLeowk";
+            document.getElementById('modalDesc').textContent = report.analysis?.summary || 'Categorized with smart filters.';
+            document.getElementById('modalConfidence').textContent = `${report.analysis?.confidence || 85}% AI Scan Accuracy`;
+            document.getElementById('modalTrust').textContent = `${report.trust}% Community Trust`;
+            document.getElementById('evidenceModal').classList.remove('hidden');
+        }
+    }
+
+    function closeEvidenceModal() {
+        document.getElementById('evidenceModal').classList.add('hidden');
+    }
+
+    // Gamification sidebar synchronizer
+    function syncGamificationWidget(state) {
+        const user = state.user;
+        document.getElementById('verify-level-text').textContent = `Community Level ${user.level}`;
+        
+        const progress = window.civicController.getLevelProgress();
+        document.getElementById('verify-xp-bar').style.width = `${progress.percent}%`;
+        document.getElementById('verify-xp-text').textContent = `Master Guardian • ${user.reputation * 10} Total Points`;
+        document.getElementById('verify-lvl-label-1').textContent = `Level ${user.level}`;
+        document.getElementById('verify-lvl-label-2').textContent = `${progress.remaining} XP to Level ${user.level + 1}`;
+        document.querySelectorAll('[data-user-level-badge]').forEach(badge => badge.textContent = user.level);
+
+        // Highlight achieved badges
+        const badgesContainer = document.getElementById('badges-container');
+        badgesContainer.innerHTML = '';
+
+        const badgeList = [
+            { id: 'fast', label: 'Fast Verifier', icon: 'verified', active: user.level >= 1 },
+            { id: 'night', label: 'Night Owl', icon: 'nightlight', active: user.level >= 2 },
+            { id: 'protector', label: 'Protector', icon: 'shield', active: user.level >= 3 }
+        ];
+
+        badgeList.forEach(badge => {
+            badgesContainer.innerHTML += `
+                <div class="flex flex-col items-center gap-2 ${badge.active ? 'opacity-100' : 'opacity-40'}">
+                    <div class="w-16 h-16 rounded-2xl ${badge.active ? 'bg-secondary-container text-on-secondary-container border border-secondary/20' : 'bg-surface-container text-on-surface-variant border'} flex items-center justify-center shadow-sm">
+                        <span class="material-symbols-outlined text-[32px]">${badge.icon}</span>
+                    </div>
+                    <span class="text-[10px] font-bold leading-tight text-center">${badge.label}</span>
+                </div>
+            `;
+        });
+    }
+
+    // State synchronization callback
+    window.onCivicStateSync = function(state) {
+        renderVerificationFeed(state);
+        syncGamificationWidget(state);
+    };
+</script>
+</body>
+</html>

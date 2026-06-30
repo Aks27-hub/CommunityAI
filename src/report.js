@@ -1,4 +1,4 @@
-let severity = "";
+let severity = "Moderate"; // Set default to Moderate
 
 function setSeverity(level, button) {
     severity = level;

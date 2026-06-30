@@ -1,25 +1,30 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>City Champion | Live Progress Tracking</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<style>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>City Champion | Live Progress Tracking</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #070b13;
+            color: #f8fafc;
+        }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
         .glass-surface {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(13, 20, 35, 0.65);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.15);
         }
         .timeline-gradient {
-            background: linear-gradient(to bottom, #006c49 0%, #006c49 50%, #e0e3e5 50%, #e0e3e5 100%);
+            background: linear-gradient(to bottom, #10b981 0%, #10b981 50%, #334155 50%, #334155 100%);
             background-size: 100% 200%;
             background-position: bottom;
             transition: background-position 1s ease-in-out;
@@ -32,548 +37,501 @@
             50% { transform: scale(1.05); opacity: 0.3; }
             100% { transform: scale(0.95); opacity: 0.5; }
         }
-        .escalation-ladder-step {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
     </style>
-<script id="tailwind-config">
+    <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     "colors": {
-                        "primary": "#000000",
+                        "primary": "#6cf8bb",
+                        "on-primary": "#042f1a",
+                        "primary-container": "#0c2b1e",
+                        "on-primary-container": "#6cf8bb",
+                        "secondary": "#10b981",
                         "on-secondary": "#ffffff",
-                        "surface-container-highest": "#e0e3e5",
-                        "surface-container": "#eceef0",
-                        "on-primary-fixed-variant": "#3f465c",
-                        "inverse-surface": "#2d3133",
-                        "on-tertiary": "#ffffff",
-                        "on-background": "#191c1e",
-                        "on-secondary-container": "#00714d",
-                        "primary-container": "#131b2e",
-                        "surface-dim": "#d8dadc",
-                        "on-surface-variant": "#45464d",
-                        "on-error-container": "#93000a",
-                        "tertiary-container": "#2a1700",
-                        "on-tertiary-fixed": "#2a1700",
-                        "primary-fixed": "#dae2fd",
-                        "error": "#ba1a1a",
-                        "tertiary": "#000000",
-                        "surface-bright": "#f7f9fb",
-                        "inverse-primary": "#bec6e0",
-                        "on-tertiary-fixed-variant": "#653e00",
-                        "secondary-fixed": "#6ffbbe",
+                        "secondary-container": "#064e3b",
+                        "on-secondary-container": "#a7f3d0",
+                        "tertiary": "#38bdf8",
+                        "on-tertiary": "#0369a1",
+                        "background": "#070b13",
+                        "on-background": "#f8fafc",
+                        "surface": "#0d1425",
+                        "on-surface": "#f8fafc",
+                        "surface-variant": "#1e293b",
+                        "on-surface-variant": "#94a3b8",
+                        "surface-container-lowest": "#030712",
+                        "surface-container-low": "#0b1220",
+                        "surface-container": "#0f172a",
+                        "surface-container-high": "#1e293b",
+                        "surface-container-highest": "#334155",
+                        "outline": "#334155",
+                        "outline-variant": "#1e293b",
+                        "inverse-surface": "#f8fafc",
+                        "inverse-on-surface": "#070b13",
+                        "error": "#ef4444",
                         "on-error": "#ffffff",
-                        "surface": "#f7f9fb",
-                        "surface-container-lowest": "#ffffff",
-                        "on-primary-container": "#7c839b",
-                        "tertiary-fixed-dim": "#ffb95f",
-                        "on-primary": "#ffffff",
-                        "on-secondary-fixed": "#002113",
-                        "outline-variant": "#c6c6cd",
-                        "surface-container-low": "#f2f4f6",
-                        "tertiary-fixed": "#ffddb8",
-                        "secondary": "#006c49",
-                        "inverse-on-surface": "#eff1f3",
-                        "surface-variant": "#e0e3e5",
-                        "on-primary-fixed": "#131b2e",
-                        "surface-container-high": "#e6e8ea",
-                        "outline": "#76777d",
-                        "on-surface": "#191c1e",
-                        "secondary-container": "#6cf8bb",
-                        "error-container": "#ffdad6",
-                        "surface-tint": "#565e74",
-                        "background": "#f7f9fb",
-                        "primary-fixed-dim": "#bec6e0",
-                        "secondary-fixed-dim": "#4edea3",
-                        "on-tertiary-container": "#b87500",
-                        "on-secondary-fixed-variant": "#005236"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "gutter": "20px",
-                        "sm": "16px",
-                        "base": "4px",
-                        "lg": "48px",
-                        "margin-desktop": "64px",
-                        "margin-mobile": "16px",
-                        "xl": "80px",
-                        "xs": "8px",
-                        "md": "24px"
-                    },
-                    "fontFamily": {
-                        "label-caps": ["Inter"],
-                        "headline-lg-mobile": ["Inter"],
-                        "label-md": ["Inter"],
-                        "headline-lg": ["Inter"],
-                        "headline-md": ["Inter"],
-                        "headline-xl": ["Inter"],
-                        "body-lg": ["Inter"],
-                        "body-md": ["Inter"]
-                    },
-                    "fontSize": {
-                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
-                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
-                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "500"}],
-                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
-                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "0em", "fontWeight": "600"}],
-                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                        "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "400"}],
-                        "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}]
+                        "error-container": "#7f1d1d",
+                        "on-error-container": "#fca5a5"
                     }
-                },
-            },
+                }
+            }
         }
     </script>
 </head>
 <body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-4 md:px-margin-desktop h-16 bg-surface/70 backdrop-blur-md border-b border-white/10 shadow-sm">
+    <button onclick="window.location.href='city_center.html'" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-white shadow hover:bg-surface-container-high transition-colors">
+        ← Home
+    </button>
+    <div class="flex items-center gap-4">
+        <span class="font-headline-md text-headline-md font-bold text-primary cursor-pointer" onclick="window.location.href='city_center.html'">City Champion</span>
+    </div>
+    <div class="flex items-center gap-3">
+        <button class="p-2 rounded-full hover:bg-surface-container-highest/50 transition-colors" onclick="window.location.href='leaderboard.html'">
+            <span class="material-symbols-outlined text-on-surface-variant">military_tech</span>
+        </button>
+        <div class="h-8 w-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant cursor-pointer" onclick="window.location.href='profile.html'">
+            <img class="w-full h-full object-cover" data-user-avatar src=""/>
+        </div>
+    </div>
+</header>
+
 <!-- SideNavBar (Desktop) -->
 <aside class="hidden lg:flex flex-col h-screen p-4 gap-2 fixed left-0 top-0 w-64 bg-surface/80 backdrop-blur-xl border-r border-white/10 shadow-xl z-50">
-<div class="flex items-center gap-3 px-4 py-6">
-<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-lg">
-<span class="material-symbols-outlined">military_tech</span>
-</div>
-<div>
-<h1 class="font-headline-sm text-headline-sm font-black text-primary">City Champion</h1>
-<p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Civic Guardian Level 12</p>
-</div>
-</div>
-<nav class="flex-1 flex flex-col gap-1 mt-4">
-<a 
-href="city_center.html"
-class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 hover:bg-surface-container-high/50 transition-all rounded-xl" href="#">
-<span class="material-symbols-outlined">home</span>
-<span class="font-label-md text-label-md">Home</span>
-</a>
-<a 
-href="report.html"
-class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 hover:bg-surface-container-high/50 transition-all rounded-xl" href="#">
-<span class="material-symbols-outlined">add_circle</span>
-<span class="font-label-md text-label-md">Report</span>
-</a>
-<a 
-href="verify.html"
-class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 hover:bg-surface-container-high/50 transition-all rounded-xl" href="#">
-<span class="material-symbols-outlined">group</span>
-<span class="font-label-md text-label-md">Community</span>
-</a>
-<a 
-href="track.html"
-class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-xl px-4 py-3 shadow-md" href="#">
-<span class="material-symbols-outlined">analytics</span>
-<span class="font-label-md text-label-md">Tracking</span>
-</a>
-<a 
-href="profile.html"
-class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 hover:bg-surface-container-high/50 transition-all rounded-xl" href="#">
-<span class="material-symbols-outlined">account_circle</span>
-<span class="font-label-md text-label-md">Profile</span>
-</a>
-</nav>
-<button class="mx-4 mb-8 bg-primary text-on-primary py-3 px-6 rounded-xl font-bold shadow-lg hover:scale-105 transition-transform flex items-center justify-center gap-2">
-<span class="material-symbols-outlined">add</span>
-            New Report
-        </button>
-<div class="border-t border-surface-container-highest mt-auto pt-4">
-<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 transition-all" href="#">
-<span class="material-symbols-outlined">settings</span>
-<span class="font-label-md text-label-md">Settings</span>
-</a>
-<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 transition-all" href="#">
-<span class="material-symbols-outlined">help</span>
-<span class="font-label-md text-label-md">Help</span>
-</a>
-</div>
+    <div class="flex items-center gap-3 px-4 py-6">
+        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-lg">
+            <span class="material-symbols-outlined">analytics</span>
+        </div>
+        <div>
+            <h1 class="text-sm font-black text-primary">Case Tracker</h1>
+            <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold" data-user-level>Civic Guardian Level 0</p>
+        </div>
+    </div>
+    <nav class="flex-1 flex flex-col gap-1 mt-4">
+        <a href="city_center.html" class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 hover:bg-surface-container-high/50 transition-all rounded-xl">
+            <span class="material-symbols-outlined">home</span>
+            <span class="font-label-md">Home</span>
+        </a>
+        <a href="report.html" class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 hover:bg-surface-container-high/50 transition-all rounded-xl">
+            <span class="material-symbols-outlined">add_circle</span>
+            <span class="font-label-md">Report</span>
+        </a>
+        <a href="verify.html" class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 hover:bg-surface-container-high/50 transition-all rounded-xl">
+            <span class="material-symbols-outlined">group</span>
+            <span class="font-label-md">Community</span>
+        </a>
+        <a href="track.html" class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-xl px-4 py-3 shadow-md">
+            <span class="material-symbols-outlined">analytics</span>
+            <span class="font-label-md font-bold">Tracking</span>
+        </a>
+        <a href="profile.html" class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 hover:bg-surface-container-high/50 transition-all rounded-xl">
+            <span class="material-symbols-outlined">account_circle</span>
+            <span class="font-label-md">Profile</span>
+        </a>
+    </nav>
 </aside>
-<!-- TopAppBar (Mobile) -->
-<header class="fixed top-0 w-full z-50 flex justify-between items-center px-4 md:px-margin-desktop h-16 bg-surface/70 backdrop-blur-md border-b border-white/10 shadow-sm lg:hidden">
-<h1 class="font-headline-md text-headline-md font-bold text-primary">Tracking</h1>
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary">military_tech</span>
-<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="A professional headshot of a diverse young man smiling warmly against a blurred urban sunset background. He is wearing a minimalist dark jacket, embodying a tech-savvy and community-engaged citizen of a modern smart city. The lighting is soft and golden, matching the Civic Premium design language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVKGR7s6mryDNb3OO6Ylwn0k_4tRIbuL7jyh0TDxeNQ7W2LDggMVxwIsjRh6Sfapez_DVXfH0KdFeZ_h0E_qA5REC-RXV3CJS-nMRx-FUMIQn0VWJhmyUayGsP2MvyNNEO5ts9OPA3u__E7NgoBnLtl3VWQG_ndkMA8ilEraGgQ8bI24UwmCJuiHbz_aYW8UImWUpjs_VzLymkGGSeQpeFA6oLLxrqXAqi_zPRLo3Ptep9a43uJu102o2JZ0zHRpsXZJ-FRV0Ls3I"/>
-</div>
-</div>
-</header>
+
 <!-- Main Content -->
 <main class="lg:ml-64 pt-20 lg:pt-8 pb-32 px-4 md:px-margin-desktop">
-<div class="max-w-6xl mx-auto grid grid-cols-1 xl:grid-cols-12 gap-8">
-<!-- Left Column: Case Details & Timeline -->
-<div class="xl:col-span-7 space-y-8">
-<!-- Case Header Card -->
-<section class="glass-surface p-6 rounded-3xl shadow-xl space-y-4">
-<div class="flex justify-between items-start">
-<div>
-<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-2 inline-block">Active Tracking</span>
-<h2 id="caseTitle" class="font-headline-md text-headline-md text-primary">Pothole Repair: 42nd Avenue</h2>
-<p id="caseAddress" class="text-on-surface-variant flex items-center gap-2">
-<span class="material-symbols-outlined text-sm">location_on</span> 
-                                Silicon District, Sector 7 • Report ID: #CC-8829
-                            </p>
-</div>
-<div class="flex flex-col items-end">
-<span id="caseProbabilityText" class="text-secondary font-black text-2xl">82%</span>
-<span class="text-[10px] text-on-surface-variant font-bold uppercase">Probability Resolved</span>
-</div>
-</div>
-<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
-<div id="caseProgressBar" class="h-full bg-secondary w-[82%] rounded-full shadow-[0_0_10px_rgba(0,108,73,0.4)] transition-all duration-1000 ease-out"></div>
-</div>
-</section>
-<!-- Vertical Animated Timeline -->
-<section class="glass-surface p-8 rounded-3xl shadow-xl">
-<h3 class="font-headline-md text-headline-md mb-8">Live Status Timeline</h3>
-<div id="timelineContainer" class="relative flex flex-col gap-12 ml-4">
-<!-- Dynamic timeline steps will render here -->
-</div>
-</section>
-</div>
-<!-- Right Column: Escalation & Widgets -->
-<div class="xl:col-span-5 space-y-8">
-<!-- Escalation View -->
-<section class="glass-surface p-8 rounded-3xl shadow-xl overflow-hidden relative">
-<div class="absolute top-0 right-0 p-4 opacity-10">
-<span class="material-symbols-outlined text-8xl">military_tech</span>
-</div>
-<h3 class="font-headline-md text-headline-md mb-6">Escalation Ladder</h3>
-<div class="space-y-4">
-<!-- Step High -->
-<div id="escalationTier3" class="escalation-ladder-step p-4 rounded-2xl bg-surface-container-low border border-white/20 flex items-center gap-4 group hover:bg-white transition-all">
-<div class="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
-<span class="material-symbols-outlined">account_balance</span>
-</div>
-<div class="flex-1">
-<p class="text-[10px] font-bold text-on-surface-variant uppercase">Tier 3</p>
-<h4 class="font-bold text-on-surface-variant">Municipal Commissioner</h4>
-</div>
-<span id="lockTier3" class="material-symbols-outlined text-surface-container-highest">lock</span>
-</div>
-<!-- Step Med -->
-<div id="escalationTier2" onclick="triggerEscalation()" class="escalation-ladder-step p-4 rounded-2xl bg-surface-container-low border border-white/20 flex items-center gap-4 group hover:bg-white transition-all cursor-pointer">
-<div class="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
-<span class="material-symbols-outlined">policy</span>
-</div>
-<div class="flex-1">
-<p class="text-[10px] font-bold text-on-surface-variant uppercase">Tier 2 • Click to Escalate</p>
-<h4 class="font-bold text-on-surface-variant">Zonal Engineer</h4>
-</div>
-<span id="lockTier2" class="material-symbols-outlined text-surface-container-highest">lock</span>
-</div>
-<!-- Step Current -->
-<div id="escalationTier1" class="escalation-ladder-step p-5 rounded-2xl bg-secondary/5 border-2 border-secondary/20 flex items-center gap-4 shadow-sm relative overflow-hidden">
-<div class="absolute top-0 left-0 w-1 h-full bg-secondary"></div>
-<div class="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center text-on-secondary shadow-lg">
-<span class="material-symbols-outlined">engineering</span>
-</div>
-<div class="flex-1">
-<p class="text-[10px] font-bold text-secondary uppercase">Tier 1 • Active</p>
-<h4 class="font-bold text-primary">Department Field Team</h4>
-<p class="text-xs text-on-surface-variant mt-1">Resolution time: &lt; 24h remaining</p>
-</div>
-<div class="flex items-center gap-1 text-secondary animate-pulse">
-<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
-</div>
-</div>
-</div>
-</section>
-<!-- Live Map Widget -->
-<section class="h-64 rounded-3xl overflow-hidden shadow-xl relative">
-<div class="absolute inset-0 bg-surface-container">
-<img class="w-full h-full object-cover" data-alt="A sophisticated digital map visualization of a modern smart city grid. The map uses a minimalist 'Civic Premium' aesthetic with cool blues and clean white lines. A prominent bright green marker indicates the specific report location at 42nd Avenue, with a subtle radiating pulse effect. The surrounding streets are clearly labeled in crisp typography." data-location="Silicon District, Sector 7" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKuWCC0_Z3Sxb868QAUdz7WFgKEX1qVNEFn2HAJvHZ_YKKYXJI4eP5qye8GPEaBA9KcJVYclYAHAIVYO3SgYk5PJ4-Gfd5ZqRkrrKJLuXIlaTTzJ6hSSlpHw3dSDScdQ13PnBunUGNam3Jz2y8jhUhQlnpx92TtVz95gaS3bXg59q3tGYRfJUigWKuCE73vQd1PwSK67kei4BP9zyGGPoDTEly87QgZWSlejZGzHtxi6OnfxrgqN88ZYMwzzm89J6ypQ9d5lnQpqc"/>
-</div>
-<div class="absolute bottom-4 left-4 glass-surface px-4 py-2 rounded-xl shadow-lg border border-white/20">
-<div class="flex items-center gap-2">
-<div class="w-2 h-2 bg-secondary rounded-full active-pulse"></div>
-<span class="text-xs font-bold text-primary">Live Tracking Enabled</span>
-</div>
-</div>
-<button class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-primary">my_location</span>
-</button>
-</section>
-<!-- Live Comments & Feed -->
-<section class="glass-surface p-6 rounded-3xl shadow-xl">
-<h3 class="font-headline-md text-headline-md mb-6">Activity Feed</h3>
-<div class="space-y-6">
-<div id="commentsFeed" class="space-y-6">
-<!-- Dynamic comments render here -->
-</div>
-<!-- Input Field -->
-<div class="relative mt-4">
-<input id="commentInput" onkeydown="if(event.key === 'Enter') sendMyComment()" class="w-full bg-white/50 border border-surface-container-highest rounded-2xl px-5 py-3 pr-12 focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all" placeholder="Add a comment or photo..." type="text"/>
-<button onclick="sendMyComment()" class="absolute right-2 top-2 w-8 h-8 bg-secondary text-on-secondary rounded-lg flex items-center justify-center hover:bg-secondary/90 transition-colors">
-<span class="material-symbols-outlined text-sm">send</span>
-</button>
-</div>
-</div>
-</section>
-</div>
-</div>
+    <div class="max-w-6xl mx-auto grid grid-cols-1 xl:grid-cols-12 gap-8">
+        
+        <!-- Left Column: Case Details & Timeline -->
+        <div class="xl:col-span-7 space-y-8">
+            <!-- Case Header Card -->
+            <section class="glass-surface p-6 rounded-3xl shadow-xl space-y-4 bg-white">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <span id="case-status-badge" class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-2 inline-block">Active Tracking</span>
+                        <h2 id="caseTitle" class="text-2xl font-bold text-primary">Pothole Repair: 42nd Avenue</h2>
+                        <p id="caseAddress" class="text-on-surface-variant text-sm flex items-center gap-2 mt-1">
+                            <span class="material-symbols-outlined text-sm">location_on</span> 
+                            Silicon District, Sector 7 • Report ID: #CC-8829
+                        </p>
+                    </div>
+                    <div class="flex flex-col items-end">
+                        <span id="caseProbabilityText" class="text-secondary font-black text-2xl">82%</span>
+                        <span class="text-[10px] text-on-surface-variant font-bold uppercase">Confidence</span>
+                    </div>
+                </div>
+                <div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+                    <div id="caseProgressBar" class="h-full bg-secondary rounded-full shadow-[0_0_10px_rgba(0,108,73,0.4)] transition-all duration-1000 ease-out" style="width: 82%;"></div>
+                </div>
+            </section>
+
+            <!-- Vertical Animated Timeline -->
+            <section class="glass-surface p-8 rounded-3xl shadow-xl bg-white">
+                <h3 class="text-xl font-bold text-primary mb-8">Live Status Timeline</h3>
+                <div id="timelineContainer" class="relative flex flex-col gap-12 ml-4">
+                    <!-- Dynamic timeline steps will render here -->
+                </div>
+            </section>
+        </div>
+
+        <!-- Right Column: Escalation & Widgets -->
+        <div class="xl:col-span-5 space-y-8">
+            <!-- Escalation View -->
+            <section class="glass-surface p-8 rounded-3xl shadow-xl overflow-hidden relative bg-white">
+                <div class="absolute top-0 right-0 p-4 opacity-10">
+                    <span class="material-symbols-outlined text-8xl">military_tech</span>
+                </div>
+                <h3 class="text-xl font-bold text-primary mb-6">Escalation Ladder</h3>
+                <div class="space-y-4">
+                    <!-- Step High -->
+                    <div id="escalationTier3" class="escalation-ladder-step p-4 rounded-2xl bg-surface-container-low border border-white/20 flex items-center gap-4 group hover:bg-white transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
+                            <span class="material-symbols-outlined">account_balance</span>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-[10px] font-bold text-on-surface-variant uppercase">Tier 3</p>
+                            <h4 class="font-bold text-on-surface-variant">Municipal Commissioner</h4>
+                        </div>
+                        <span id="lockTier3" class="material-symbols-outlined text-surface-container-highest">lock</span>
+                    </div>
+                    <!-- Step Med -->
+                    <div id="escalationTier2" onclick="triggerEscalation()" class="escalation-ladder-step p-4 rounded-2xl bg-surface-container-low border border-white/20 flex items-center gap-4 group hover:bg-white transition-all cursor-pointer">
+                        <div class="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
+                            <span class="material-symbols-outlined">policy</span>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-[10px] font-bold text-on-surface-variant uppercase">Tier 2 • Click to Escalate</p>
+                            <h4 class="font-bold text-on-surface-variant">Zonal Engineer</h4>
+                        </div>
+                        <span id="lockTier2" class="material-symbols-outlined text-surface-container-highest">lock</span>
+                    </div>
+                    <!-- Step Current -->
+                    <div id="escalationTier1" class="escalation-ladder-step p-5 rounded-2xl bg-secondary/5 border-2 border-secondary/20 flex items-center gap-4 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-secondary"></div>
+                        <div class="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center text-on-secondary shadow-lg">
+                            <span class="material-symbols-outlined">engineering</span>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-[10px] font-bold text-secondary uppercase">Tier 1 • Active</p>
+                            <h4 class="font-bold text-primary">Department Field Team</h4>
+                            <p class="text-xs text-on-surface-variant mt-1">Status: Dispatched & Underway</p>
+                        </div>
+                        <div class="flex items-center gap-1 text-secondary animate-pulse">
+                            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Live Map Widget -->
+            <section class="h-64 rounded-3xl overflow-hidden shadow-xl relative">
+                <div class="absolute inset-0 bg-surface-container">
+                    <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKuWCC0_Z3Sxb868QAUdz7WFgKEX1qVNEFn2HAJvHZ_YKKYXJI4eP5qye8GPEaBA9KcJVYclYAHAIVYO3SgYk5PJ4-Gfd5ZqRkrrKJLuXIlaTTzJ6hSSlpHw3dSDScdQ13PnBunUGNam3Jz2y8jhUhQlnpx92TtVz95gaS3bXg59q3tGYRfJUigWKuCE73vQd1PwSK67kei4BP9zyGGPoDTEly87QgZWSlejZGzHtxi6OnfxrgqN88ZYMwzzm89J6ypQ9d5lnQpqc" alt="Silicon District Map"/>
+                </div>
+                <div class="absolute bottom-4 left-4 glass-surface px-4 py-2 rounded-xl shadow-lg border border-white/20 bg-white/90">
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 bg-secondary rounded-full active-pulse"></div>
+                        <span class="text-xs font-bold text-primary">Live Tracking Active</span>
+                    </div>
+                </div>
+                <button class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-primary">my_location</span>
+                </button>
+            </section>
+
+            <!-- Live Comments & Feed -->
+            <section class="glass-surface p-6 rounded-3xl shadow-xl bg-white">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-lg font-bold text-primary">Activity & AI Feed</h3>
+                    <button onclick="requestLiveFieldChatter()" class="text-xs flex items-center gap-1 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-bold hover:scale-105 active:scale-95 transition-all">
+                        <span class="material-symbols-outlined text-xs">auto_awesome</span> Request AI Field Chatter
+                    </button>
+                </div>
+                <div class="space-y-6">
+                    <div id="commentsFeed" class="space-y-6">
+                        <!-- Dynamic comments render here -->
+                    </div>
+                    <!-- Input Field -->
+                    <div class="relative mt-4">
+                        <input id="commentInput" onkeydown="if(event.key === 'Enter') sendMyComment()" class="w-full bg-white/50 border border-surface-container-highest rounded-2xl px-5 py-3 pr-12 focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all" placeholder="Add a comment or update..."/>
+                        <button onclick="sendMyComment()" class="absolute right-2 top-2 w-8 h-8 bg-secondary text-on-secondary rounded-lg flex items-center justify-center hover:bg-secondary/90 transition-colors">
+                            <span class="material-symbols-outlined text-sm">send</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
 </main>
+
 <!-- BottomNavBar (Mobile) -->
 <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 lg:hidden bg-surface/70 backdrop-blur-lg border-t border-white/10 shadow-lg rounded-t-xl">
-<a href="city_center.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
-<span class="material-symbols-outlined">home</span>
-<span class="font-label-md text-[10px] mt-1">Home</span>
-</a>
-<a href="report.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
-<span class="material-symbols-outlined">add_circle</span>
-<span class="font-label-md text-[10px] mt-1">Report</span>
-</a>
-<a href="verify.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
-<span class="material-symbols-outlined">group</span>
-<span class="font-label-md text-[10px] mt-1">Community</span>
-</a>
-<a href="track.html" class="flex flex-col items-center justify-center text-secondary scale-110 transition-transform px-3 py-1">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
-<span class="font-label-md text-[10px] mt-1 font-bold">Tracking</span>
-</a>
-<a href="profile.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
-<span class="material-symbols-outlined">account_circle</span>
-<span class="font-label-md text-[10px] mt-1">Profile</span>
-</a>
+    <a href="city_center.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+        <span class="material-symbols-outlined">home</span>
+        <span class="text-[10px] mt-1">Home</span>
+    </a>
+    <a href="report.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+        <span class="material-symbols-outlined">add_circle</span>
+        <span class="text-[10px] mt-1">Report</span>
+    </a>
+    <a href="verify.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+        <span class="material-symbols-outlined">group</span>
+        <span class="text-[10px] mt-1">Verify</span>
+    </a>
+    <a href="track.html" class="flex flex-col items-center justify-center text-secondary scale-110 transition-transform px-3 py-1">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+        <span class="text-[10px] mt-1 font-bold">Tracking</span>
+    </a>
+    <a href="profile.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+        <span class="material-symbols-outlined">account_circle</span>
+        <span class="text-[10px] mt-1">Profile</span>
+    </a>
 </nav>
-<!-- Floating Action Button -->
-<button onclick="shareCase()" class="fixed right-6 bottom-24 lg:bottom-12 w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40 lg:right-12">
-<span class="material-symbols-outlined text-3xl">share</span>
-</button>
+
 <script src="shared.js"></script>
 <script>
-        let activeReportId = "";
+    let activeReportId = "";
 
-        // Parse query string for report ID
-        function getReportIdFromUrl() {
-            const params = new URLSearchParams(window.location.search);
-            return params.get('id') || "#CC-8829"; // Default to CC-8829
+    function getReportIdFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('id') || (window.CivicState?.reports?.[0]?.id || "#RU-902");
+    }
+
+    function renderCase(state) {
+        const id = getReportIdFromUrl();
+        activeReportId = id;
+        
+        const report = state.reports.find(r => r.id === id);
+        if (!report) {
+            document.getElementById('caseTitle').textContent = "Report Not Found";
+            return;
         }
 
-        function renderCase(state) {
-            const id = getReportIdFromUrl();
-            activeReportId = id;
-            
-            const report = state.reports.find(r => r.id === id);
-            if (!report) {
-                document.getElementById('caseTitle').textContent = "Report Not Found";
-                return;
+        // Update case info
+        document.getElementById('caseTitle').textContent = report.title;
+        document.getElementById('caseAddress').innerHTML = `<span class="material-symbols-outlined text-sm">location_on</span> ${report.address} • Report ID: ${report.id}`;
+        
+        // Confidence calculation
+        let prob = 10;
+        if (report.status === 'Reported') prob = 15;
+        if (report.status === 'Verified') prob = 45;
+        if (report.status === 'In Progress') prob = 82;
+        if (report.status === 'Escalated to Zonal Engineer') prob = 60;
+        if (report.status === 'Resolved Pending Verification' || report.status === 'Resolved') prob = 100;
+
+        document.getElementById('caseProbabilityText').textContent = prob + "%";
+        document.getElementById('caseProgressBar').style.width = prob + "%";
+
+        renderTimeline(report);
+        renderComments(report);
+        syncEscalationLadder(report);
+    }
+
+    function renderTimeline(report) {
+        const container = document.getElementById('timelineContainer');
+        container.innerHTML = '';
+
+        // Create timeline vertical line
+        const line = document.createElement('div');
+        line.className = 'absolute left-[15px] top-0 bottom-0 w-[2px] bg-surface-container-highest';
+        
+        let fillHeight = "0%";
+        if (report.status === 'Verified') fillHeight = "33%";
+        if (report.status === 'In Progress' || report.status === 'Escalated to Zonal Engineer') fillHeight = "66%";
+        if (report.status === 'Resolved' || report.status === 'Resolved Pending Verification') fillHeight = "100%";
+        
+        line.innerHTML = `<div class="w-full bg-secondary transition-all duration-1000" style="height: ${fillHeight}"></div>`;
+        container.appendChild(line);
+
+        const steps = [
+            { title: "Reported", checkStatus: ['Reported', 'Verified', 'In Progress', 'Resolved', 'Resolved Pending Verification', 'Escalated to Zonal Engineer'], desc: `Validated by community AI on ${report.date}.` },
+            { title: "Verified", checkStatus: ['Verified', 'In Progress', 'Resolved', 'Resolved Pending Verification', 'Escalated to Zonal Engineer'], desc: "Confirmed severity score and neighbor impact." },
+            { title: "Work in Progress", checkStatus: ['In Progress', 'Resolved', 'Resolved Pending Verification', 'Escalated to Zonal Engineer'], desc: report.department ? `${report.department} field team assigned and active.` : "Awaiting department dispatch." },
+            { title: "Resolved", checkStatus: ['Resolved', 'Resolved Pending Verification'], desc: "Resolution completed. Awaiting final community verification." }
+        ];
+
+        steps.forEach((step, idx) => {
+            const isActive = report.status === step.title || (step.title === 'Work in Progress' && (report.status === 'In Progress' || report.status === 'Escalated to Zonal Engineer')) || (step.title === 'Resolved' && report.status === 'Resolved Pending Verification');
+            const isCompleted = step.checkStatus.includes(report.status) && !isActive;
+            const isPending = !isCompleted && !isActive;
+
+            const stepDiv = document.createElement('div');
+            stepDiv.className = `relative flex items-start gap-8 group ${isPending ? 'opacity-40' : ''}`;
+
+            let badgeHtml = '';
+            if (isCompleted) {
+                badgeHtml = `
+                    <div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center z-10 shadow-lg scale-110">
+                        <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+                    </div>
+                `;
+            } else if (isActive) {
+                badgeHtml = `
+                    <div class="relative">
+                        <div class="absolute -inset-2 bg-secondary-container/50 rounded-full active-pulse"></div>
+                        <div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center z-10 shadow-lg ring-4 ring-white">
+                            <span class="material-symbols-outlined text-sm">construction</span>
+                        </div>
+                    </div>
+                `;
+            } else {
+                badgeHtml = `
+                    <div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center z-10">
+                        <span class="material-symbols-outlined text-sm">circle</span>
+                    </div>
+                `;
             }
 
-            // Update case info
-            document.getElementById('caseTitle').textContent = report.title + ": " + report.address.split(',')[0];
-            document.getElementById('caseAddress').innerHTML = `<span class="material-symbols-outlined text-sm">location_on</span> ${report.address} • Report ID: ${report.id}`;
-            
-            // Calculate probability resolved based on status
-            let prob = 10;
-            if (report.status === 'Verified') prob = 45;
-            if (report.status === 'In Progress') prob = 82;
-            if (report.status === 'Resolved Pending Verification' || report.status === 'Resolved' || report.status === 'Resolved Pending Verification') prob = 100;
-            if (report.status === 'Escalated to Zonal Engineer') prob = 60;
+            let bodyHtml = `
+                <div>
+                    <h4 class="font-bold text-primary">${step.title}</h4>
+                    <p class="text-on-surface-variant text-xs">${isActive ? 'Active Now' : report.date}</p>
+                    <p class="text-on-surface text-sm mt-1">${step.desc}</p>
+                </div>
+            `;
 
-            document.getElementById('caseProbabilityText').textContent = prob + "%";
-            document.getElementById('caseProgressBar').style.width = prob + "%";
-
-            // Render timeline
-            renderTimeline(report);
-
-            // Render comments
-            renderComments(report);
-
-            // Render Escalation Ladder status
-            syncEscalationLadder(report);
-        }
-
-        function renderTimeline(report) {
-            const container = document.getElementById('timelineContainer');
-            container.innerHTML = '';
-
-            // Create timeline vertical line
-            const line = document.createElement('div');
-            line.className = 'absolute left-[15px] top-0 bottom-0 w-[2px] bg-surface-container-highest';
-            
-            // Determine line fill percentage
-            let fillHeight = "0%";
-            if (report.status === 'Verified') fillHeight = "33%";
-            if (report.status === 'In Progress' || report.status === 'Escalated to Zonal Engineer') fillHeight = "66%";
-            if (report.status === 'Resolved' || report.status === 'Resolved Pending Verification') fillHeight = "100%";
-            
-            line.innerHTML = `<div class="w-full bg-secondary transition-all duration-1000" style="height: ${fillHeight}"></div>`;
-            container.appendChild(line);
-
-            // Render steps
-            const steps = [
-                { title: "Reported", checkStatus: ['Reported', 'Verified', 'In Progress', 'Resolved', 'Resolved Pending Verification', 'Escalated to Zonal Engineer'], desc: `Validated by citizen AI on ${report.date}.` },
-                { title: "Verified", checkStatus: ['Verified', 'In Progress', 'Resolved', 'Resolved Pending Verification', 'Escalated to Zonal Engineer'], desc: "Confirmed priority score and neighborhood impact." },
-                { title: "Work in Progress", checkStatus: ['In Progress', 'Resolved', 'Resolved Pending Verification', 'Escalated to Zonal Engineer'], desc: report.department ? `${report.department} field team assigned and active.` : "Awaiting department dispatch." },
-                { title: "Resolved", checkStatus: ['Resolved', 'Resolved Pending Verification'], desc: "Resolution completed. Awaiting final community confirmation." }
-            ];
-
-            steps.forEach((step, idx) => {
-                const isActive = report.status === step.title || (step.title === 'Work in Progress' && report.status === 'Escalated to Zonal Engineer');
-                const isCompleted = step.checkStatus.includes(report.status) && !isActive;
-                const isPending = !isCompleted && !isActive;
-
-                const stepDiv = document.createElement('div');
-                stepDiv.className = `relative flex items-start gap-8 group ${isPending ? 'opacity-40' : ''}`;
-
-                let badgeHtml = '';
-                if (isCompleted) {
-                    badgeHtml = `
-                        <div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center z-10 shadow-lg scale-110">
-                            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
-                        </div>
-                    `;
-                } else if (isActive) {
-                    badgeHtml = `
-                        <div class="relative">
-                            <div class="absolute -inset-2 bg-secondary-container/50 rounded-full active-pulse"></div>
-                            <div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center z-10 shadow-lg ring-4 ring-white">
-                                <span class="material-symbols-outlined text-sm">construction</span>
-                            </div>
-                        </div>
-                    `;
-                } else {
-                    badgeHtml = `
-                        <div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center z-10">
-                            <span class="material-symbols-outlined text-sm">circle</span>
-                        </div>
-                    `;
-                }
-
-                let bodyHtml = `
+            if (step.title === 'Work in Progress' && (isActive || isCompleted)) {
+                const previewImg = report.img || "https://lh3.googleusercontent.com/aida-public/AB6AXuCLQXeyzGar9v1kQF29pvUPx2g0ufGSbyJpi7vsAOPRMhvbXddYc2c4h8aa5a6LEOehvvmNxnswqW4soaYxUD8U2DPvHgENsrN6V59jH5Iy6gRxs_f0AQoheKwp1yplxkBgF-KhtHqDe29zbSZv1JBixvmXoNWqYXtbt21nLtkdieDzXSYWfehM7dPNl8Rxp2cWXNaxaUoY2Ak2s9TX4riTLBSPZLwTVcoDP8-gcTAF4PBn8iMh2JGgzw36s0siZGCab_pwzXLeowk";
+                bodyHtml = `
                     <div>
                         <h4 class="font-bold text-primary">${step.title}</h4>
-                        <p class="text-on-surface-variant text-sm">${isActive ? 'Active Now' : report.date}</p>
+                        <p class="${isActive ? 'text-secondary font-semibold' : 'text-on-surface-variant'} text-xs">${isActive ? 'Active Now' : report.date}</p>
                         <p class="text-on-surface text-sm mt-1">${step.desc}</p>
-                    </div>
-                `;
-
-                // Inject latest site photo for active Work in progress step
-                if (step.title === 'Work in Progress' && (isActive || isCompleted)) {
-                    bodyHtml = `
-                        <div>
-                            <h4 class="font-bold text-primary">${step.title}</h4>
-                            <p class="${isActive ? 'text-secondary font-semibold' : 'text-on-surface-variant'} text-sm">${isActive ? 'Active Now' : report.date}</p>
-                            <p class="text-on-surface text-sm mt-1">${step.desc}</p>
-                            <div class="mt-4 p-4 bg-surface-container-low rounded-2xl border border-white/40 shadow-inner">
-                                <div class="flex items-center gap-3 mb-3">
-                                    <div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center">
-                                        <span class="material-symbols-outlined text-secondary text-sm">photo_camera</span>
-                                    </div>
-                                    <span class="text-xs font-bold text-on-surface-variant uppercase">Latest Site Photo</span>
+                        <div class="mt-4 p-4 bg-surface-container-low rounded-2xl border border-white/40 shadow-inner max-w-sm">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-secondary text-sm">photo_camera</span>
                                 </div>
-                                <div class="rounded-xl overflow-hidden shadow-md">
-                                    <img class="w-full h-48 object-cover" src="${report.img}"/>
-                                </div>
+                                <span class="text-xs font-bold text-on-surface-variant uppercase">Latest Site Photo</span>
+                            </div>
+                            <div class="rounded-xl overflow-hidden shadow-md">
+                                <img class="w-full h-48 object-cover" src="${previewImg}"/>
                             </div>
                         </div>
-                    `;
-                }
-
-                stepDiv.innerHTML = badgeHtml + bodyHtml;
-                container.appendChild(stepDiv);
-            });
-        }
-
-        function renderComments(report) {
-            const feed = document.getElementById('commentsFeed');
-            feed.innerHTML = '';
-
-            if (!report.comments || report.comments.length === 0) {
-                feed.innerHTML = `
-                    <p class="text-sm text-on-surface-variant italic text-center py-4">No comments or updates yet. Type below to start the conversation.</p>
+                    </div>
                 `;
-                return;
             }
 
-            report.comments.forEach(comment => {
-                const cDiv = document.createElement('div');
-                cDiv.className = 'flex gap-4';
-                cDiv.innerHTML = `
-                    <div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden shrink-0 shadow-sm">
-                        <img class="w-full h-full object-cover" src="${comment.avatar}"/>
-                    </div>
-                    <div class="flex-1">
-                        <div class="bg-surface-container-low p-4 rounded-2xl rounded-tl-none border border-white/40">
-                            <div class="flex justify-between items-center mb-1">
-                                <span class="font-bold text-sm text-primary">${comment.name}</span>
-                                <span class="text-[10px] text-on-surface-variant font-medium">${comment.time}</span>
-                            </div>
-                            <p class="text-sm text-on-surface">${comment.text}</p>
+            stepDiv.innerHTML = badgeHtml + bodyHtml;
+            container.appendChild(stepDiv);
+        });
+    }
+
+    function renderComments(report) {
+        const feed = document.getElementById('commentsFeed');
+        feed.innerHTML = '';
+
+        if (!report.comments || report.comments.length === 0) {
+            feed.innerHTML = `
+                <p class="text-xs text-on-surface-variant italic text-center py-4">No comments or updates yet. Type below to start.</p>
+            `;
+            return;
+        }
+
+        report.comments.forEach(comment => {
+            const cDiv = document.createElement('div');
+            cDiv.className = 'flex gap-4';
+            cDiv.innerHTML = `
+                <div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden shrink-0 shadow-sm">
+                    <img class="w-full h-full object-cover" src="${comment.avatar}"/>
+                </div>
+                <div class="flex-1">
+                    <div class="bg-surface-container-low p-4 rounded-2xl rounded-tl-none border border-white/40">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="font-bold text-sm text-primary">${comment.name}</span>
+                            <span class="text-[10px] text-on-surface-variant font-medium">${comment.time}</span>
                         </div>
+                        <p class="text-sm text-on-surface">${comment.text}</p>
                     </div>
-                `;
-                feed.appendChild(cDiv);
+                </div>
+            `;
+            feed.appendChild(cDiv);
+        });
+    }
+
+    function sendMyComment() {
+        const input = document.getElementById('commentInput');
+        const text = input.value.trim();
+        if (text && window.civicController) {
+            window.civicController.addComment(activeReportId, text);
+            input.value = '';
+        }
+    }
+
+    async function requestLiveFieldChatter() {
+        const state = window.CivicState;
+        const report = state?.reports?.find(r => r.id === activeReportId);
+        if (!report) return;
+
+        window.civicController.toast("Connecting to Field Radio...", "Simulating Live AI commentary with Gemini...", "wifi_calling");
+
+        try {
+            const response = await fetch('/api/track-status', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    reportId: report.id,
+                    category: report.category,
+                    status: report.status,
+                    address: report.address
+                })
             });
-        }
 
-        function sendMyComment() {
-            const input = document.getElementById('commentInput');
-            const text = input.value.trim();
-            if (text && window.civicController) {
-                window.civicController.addComment(activeReportId, text);
-                input.value = '';
-            }
-        }
-
-        function syncEscalationLadder(report) {
-            const t1 = document.getElementById('escalationTier1');
-            const t2 = document.getElementById('escalationTier2');
-            const t3 = document.getElementById('escalationTier3');
-            const lock2 = document.getElementById('lockTier2');
-            const lock3 = document.getElementById('lockTier3');
-
-            if (report.status === 'Escalated to Zonal Engineer') {
-                t2.className = 'escalation-ladder-step p-5 rounded-2xl bg-secondary/5 border-2 border-secondary/20 flex items-center gap-4 shadow-sm relative overflow-hidden';
-                t2.querySelector('h4').className = 'font-bold text-primary';
-                t2.querySelector('p').className = 'text-[10px] font-bold text-secondary uppercase';
-                t2.querySelector('p').textContent = 'Tier 2 • Escalated & Active';
-                lock2.textContent = 'notifications_active';
-                lock2.className = 'material-symbols-outlined text-secondary animate-pulse';
-
-                t1.className = 'escalation-ladder-step p-4 rounded-2xl bg-surface-container-low border border-white/20 flex items-center gap-4 opacity-50';
-            }
-        }
-
-        function triggerEscalation() {
-            const state = window.civicController.state;
-            const report = state.reports.find(r => r.id === activeReportId);
-            if (report && report.status !== 'Escalated to Zonal Engineer') {
-                if (confirm('Verify: Would you like to escalate this issue to the Zonal Engineer? This alerts municipal supervision.')) {
-                    report.status = 'Escalated to Zonal Engineer';
-                    report.timeline.push({
-                        status: 'Escalated',
-                        date: 'Just now',
-                        description: 'Escalated to Tier 2 (Zonal Engineer) by Community Advocate consensus.'
-                    });
-                    window.civicController.save();
-                    window.civicController.toast("Case Escalated", "Escalated to Zonal Engineer. supervisor dispatched.", "policy");
-                    window.civicController.addXp(20);
-                    window.civicController.syncUI();
-                }
-            }
-        }
-
-        function shareCase() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Civic Issue tracking',
-                    text: `Help track this report: ${activeReportId} on City Champion`,
-                    url: window.location.href,
+            if (response.ok) {
+                const data = await response.json();
+                
+                // Add commentary to report as comment
+                report.comments = report.comments || [];
+                report.comments.unshift({
+                    name: "AI Dispatch Coordinator",
+                    avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuDYmHLvc4o6h-iOhPw8q-xk-n2w0gE9_ARpnrwlRuJXdcOMnrbfwnDCCD5DhWU-VT0yuDYvyIaAlSWnPSCqPCBohwKvzQ6DtbQYQgYOyebnV9dBXdI05M_S9kUcCy8H1OjhPVB6cu2vP1sXoSQHQng0M_JGSl2G0IpM9H0I2upbUsqym_im52pPhIM88MBKvvgn80LlE12ZbdBsb2cjgoyihJQkClz18JG7Cbp6Fj2v88nQz1l0A88c3c2uAfGcRre2PExjhZQ1iBs",
+                    time: "Just now",
+                    text: data.commentary
                 });
-            } else {
-                navigator.clipboard.writeText(window.location.href);
-                window.civicController.toast("Link Copied", "Shareable case tracking link copied to clipboard.", "share");
+                
+                window.civicController.addActivity("wifi_calling", "Live Dispatch Radio Update", `Recieved live updates for ${report.id}.`);
+                window.civicController.save();
+            }
+        } catch (e) {
+            console.error('Failed to get Gemini status commentary', e);
+        }
+    }
+
+    function syncEscalationLadder(report) {
+        const t1 = document.getElementById('escalationTier1');
+        const t2 = document.getElementById('escalationTier2');
+        const t3 = document.getElementById('escalationTier3');
+        const lock2 = document.getElementById('lockTier2');
+        const lock3 = document.getElementById('lockTier3');
+
+        if (report.status === 'Escalated to Zonal Engineer') {
+            t2.className = 'escalation-ladder-step p-5 rounded-2xl bg-secondary/5 border-2 border-secondary/20 flex items-center gap-4 shadow-sm relative overflow-hidden';
+            t2.querySelector('h4').className = 'font-bold text-primary';
+            t2.querySelector('p').className = 'text-[10px] font-bold text-secondary uppercase';
+            t2.querySelector('p').textContent = 'Tier 2 • Escalated & Active';
+            lock2.textContent = 'notifications_active';
+            lock2.className = 'material-symbols-outlined text-secondary animate-pulse';
+
+            t1.className = 'escalation-ladder-step p-4 rounded-2xl bg-surface-container-low border border-white/20 flex items-center gap-4 opacity-50';
+        }
+    }
+
+    function triggerEscalation() {
+        const state = window.CivicState;
+        const report = state?.reports?.find(r => r.id === activeReportId);
+        if (report && report.status !== 'Escalated to Zonal Engineer') {
+            if (confirm('Verify: Would you like to escalate this issue to the Zonal Engineer? This alerts municipal supervision.')) {
+                report.status = 'Escalated to Zonal Engineer';
+                report.timeline.push({
+                    status: 'Escalated',
+                    date: 'Just now',
+                    description: 'Escalated to Tier 2 (Zonal Engineer) by Community Advocate consensus.'
+                });
+                window.civicController.save();
+                window.civicController.toast("Case Escalated", "Escalated to Zonal Engineer. supervisor dispatched.", "policy");
+                window.civicController.addXp(20);
             }
         }
+    }
 
-        // Hook dynamic rendering to state controller
-        window.onCivicStateSync = function(state) {
-            renderCase(state);
-        };
-    </script>
-</body></html>
+    window.onCivicStateSync = function(state) {
+        renderCase(state);
+    };
+</script>
+</body>
+</html>
