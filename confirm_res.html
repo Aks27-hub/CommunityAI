@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Resolution Verification | City Champion</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#000000",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-container": "#eceef0",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "inverse-surface": "#2d3133",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#191c1e",
+                    "on-secondary-container": "#00714d",
+                    "primary-container": "#131b2e",
+                    "surface-dim": "#d8dadc",
+                    "on-surface-variant": "#45464d",
+                    "on-error-container": "#93000a",
+                    "tertiary-container": "#2a1700",
+                    "on-tertiary-fixed": "#2a1700",
+                    "primary-fixed": "#dae2fd",
+                    "error": "#ba1a1a",
+                    "tertiary": "#000000",
+                    "surface-bright": "#f7f9fb",
+                    "inverse-primary": "#bec6e0",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "secondary-fixed": "#6ffbbe",
+                    "on-error": "#ffffff",
+                    "surface": "#f7f9fb",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-container": "#7c839b",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed": "#002113",
+                    "outline-variant": "#c6c6cd",
+                    "surface-container-low": "#f2f4f6",
+                    "tertiary-fixed": "#ffddb8",
+                    "secondary": "#006c49",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface-variant": "#e0e3e5",
+                    "on-primary-fixed": "#131b2e",
+                    "surface-container-high": "#e6e8ea",
+                    "outline": "#76777d",
+                    "on-surface": "#191c1e",
+                    "secondary-container": "#6cf8bb",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#565e74",
+                    "background": "#f7f9fb",
+                    "primary-fixed-dim": "#bec6e0",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-tertiary-container": "#b87500",
+                    "on-secondary-fixed-variant": "#005236"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "20px",
+                    "sm": "16px",
+                    "base": "4px",
+                    "lg": "48px",
+                    "margin-desktop": "64px",
+                    "margin-mobile": "16px",
+                    "xl": "80px",
+                    "xs": "8px",
+                    "md": "24px"
+            },
+            "fontFamily": {
+                    "label-caps": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-xl": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "0em", "fontWeight": "600"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-surface {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .achievement-card {
+            border: 2px solid transparent;
+            background-image: linear-gradient(white, white), linear-gradient(to right, #006c49, #6cf8bb);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+        }
+        .confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .slider-handle {
+            cursor: ew-resize;
+        }
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(0.98); }
+        }
+        .ai-pulse {
+            animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen overflow-x-hidden">
+<!-- Confetti Background (Simulated with JS) -->
+<canvas class="confetti-canvas" id="confetti"></canvas>
+<!-- Top AppBar (from JSON) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-4 md:px-margin-desktop h-16 bg-surface/70 backdrop-blur-md border-b border-white/10 shadow-sm">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-primary">City Champion</span>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<nav class="flex gap-4">
+<a href="city_center.html" class="text-on-surface-variant hover:bg-surface-container-highest/50 transition-colors px-3 py-1 rounded-lg" href="#">Home</a>
+<a class="text-secondary font-bold px-3 py-1 rounded-lg" href="#">Reports</a>
+<a class="text-on-surface-variant hover:bg-surface-container-highest/50 transition-colors px-3 py-1 rounded-lg" href="#">Community</a>
+</nav>
+</div>
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container-highest/50 rounded-full">military_tech</button>
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container-highest/50 rounded-full">bolt</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a diverse male urban planner with clean-cut styling, wearing a minimalist black turtleneck, set against a blurred city morning background with soft, cool lighting. The style is high-end editorial photography with shallow depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2A5gebXzQzAJ7_18Guxzvfxw70uBd3xZrdsaJAUDt7gBA1ePF-1QQNCAijiJGCQJiiz3nWVLEH-r4Qt7j6wZ22r_cjCPNXFkxs87vbO1-uZ_5OBOJdOaKrMTvfzkluW0qFBrpakFD6khIJkysrNFPIzAnaP4TCCjBblqJtLNsG8_GBy6-T_zNI3vOVp4Y3IzQGrwaiT5fFY4hauj1IvZYJMG1BrlRia3vLHo_Fiwr66nuJBTP7jPnxZkDHeMr_iMCjVAc2Ivp4fw"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="relative z-10 pt-24 pb-32 px-4 md:px-margin-desktop max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="mb-10 text-center md:text-left">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container mb-4 ai-pulse shadow-sm">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-md text-label-md">AI Resolution Confidence: 98%</span>
+</div>
+<h1 class="font-headline-xl text-headline-lg-mobile md:text-headline-xl text-primary mb-2">Resolution Verified</h1>
+<p class="text-on-surface-variant font-body-lg max-w-2xl">Case #8821: Major Pothole Repair on West 4th Avenue. The city maintenance crew has marked this as resolved. Please verify the work.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left Column: Before/After Slider (Bento Style) -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Comparison Slider Card -->
+<div class="glass-surface rounded-3xl overflow-hidden shadow-xl p-4 md:p-6">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-headline-md text-primary">Visual Verification</h2>
+<div class="flex gap-2">
+<span class="px-3 py-1 rounded-lg bg-surface-container text-on-surface-variant font-label-md">Before</span>
+<span class="px-3 py-1 rounded-lg bg-secondary-container text-on-secondary-container font-label-md">After</span>
+</div>
+</div>
+<!-- Slider Component -->
+<div class="relative w-full aspect-video rounded-2xl overflow-hidden cursor-ew-resize select-none" id="before-after-container">
+<!-- After Image (Base) -->
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A clean, freshly paved asphalt street surface where a large pothole used to be. The repair is seamless and professional, with visible steam rising from the new blacktop. The lighting is bright midday sun, casting clear shadows and highlighting the smooth texture of the urban infrastructure. High-end architectural photography style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAl3FZFU39b_NuaZpnzzB9K83sgwtNo7wJl-PMTr3vIEgPAZUwNXFTktLtyqvaODWkqox8MawNXfAh9ROq1GbQuJ4xOnkJBXIYoFZD8VM2HJgFgJKEle9AbGkWKRzn71BO9hoGtrcVNc3YUNEFnlUf_z5cV7ZDCLeMDybu8K6eWUl31OiXxKw_-RMMRULRnuYXlv1WUkcN62gVI0X7JrVEMoTpgLLrEcxQGqYMzJxLqPCTmlfEm9B9zfilz95jeq4Cb6c8WsAao3Bk')"></div>
+<!-- Before Image (Overlay) -->
+<div class="absolute inset-0 bg-cover bg-center overflow-hidden" data-alt="A dangerous, large jagged pothole in the middle of a busy city street with crumbling asphalt edges and exposed gravel. The surrounding road is worn with faded white lane markings. The atmosphere is gritty and urban, shot on a slightly overcast day to emphasize the harsh textures of the damaged road." id="before-image" style="width: 50%; background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB7vRv6upoXNuIgwZf7Pmbb8vfSWzPfr88qPXvqAGSqcDInPwncAqBFRyFmbHX-mFKSd8r9thr-XCTBiky4YKJOxR-7bopyL9rytI0mQJf9DDbdMVMPWt5bvgVSo2XSWmwXoy_SIMCeC4g7i5sSWz4e4p8dNRI97ZVrCcleL6N1ICeox8XWnXlPDsSEmR6lit_E93Bm3ZQCSRSyo9W09cbkspOUXS827jNTHiUAUl1GAWKX2UuUJ6EhOeAe6nqTTayHMQBHiKetv0Y')">
+<!-- Overlay Label -->
+<div class="absolute inset-0 bg-black/20"></div>
+</div>
+<!-- Handle -->
+<div class="absolute top-0 bottom-0 left-1/2 w-1 bg-white shadow-[0_0_15px_rgba(0,0,0,0.5)] z-20 flex items-center justify-center" id="slider-handle">
+<div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg border-4 border-secondary">
+<span class="material-symbols-outlined text-secondary font-bold">unfold_more_double</span>
+</div>
+</div>
+</div>
+<p class="mt-6 text-on-surface-variant text-body-md italic text-center">
+                        Drag the slider to compare the reported issue with the final resolution.
+                    </p>
+</div>
+<!-- Resolution Metadata -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="glass-surface p-6 rounded-2xl border border-white/20">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-4 uppercase tracking-widest">Maintenance Crew Notes</h3>
+<p class="text-on-surface font-body-md leading-relaxed">
+                            "Deep patch repair completed using high-durability cold mix. Perimeter sealed to prevent water ingress. Site cleared of all debris."
+                        </p>
+</div>
+<div class="glass-surface p-6 rounded-2xl border border-white/20 flex flex-col justify-center">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-3xl">timer</span>
+</div>
+<div>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase">Time to Resolve</h3>
+<p class="font-headline-md text-headline-md text-primary">14h 22m</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Voting & Actions -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Community Vote Card -->
+<div class="glass-surface p-8 rounded-3xl shadow-xl flex flex-col gap-8 relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="font-headline-md text-headline-md text-primary mb-2">Community Verdict</h2>
+<p class="text-on-surface-variant text-body-md mb-8">Does this resolution meet the standards of our neighborhood?</p>
+<div class="flex flex-col gap-4">
+<button id="confirm-btn" onclick="confirmResolution()" class="w-full flex items-center justify-center gap-3 bg-secondary text-on-secondary font-bold py-4 rounded-xl shadow-lg hover:scale-[1.02] active:scale-95 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">thumb_up</span>
+                                Yes, fully resolved
+                            </button>
+<button onclick="reopenCase()" class="w-full flex items-center justify-center gap-3 bg-surface-container-highest text-on-surface-variant font-bold py-4 rounded-xl hover:bg-error-container hover:text-on-error-container transition-colors" id="reopen-btn">
+<span class="material-symbols-outlined">warning</span>
+                                No, Reopen Case
+                            </button>
+</div>
+<!-- Stats -->
+<div class="mt-8 pt-8 border-t border-outline-variant">
+<div class="flex justify-between items-center mb-2">
+<span class="text-label-md font-label-md text-on-surface-variant">Community Confidence</span>
+<span class="text-label-md font-label-md text-secondary">92% Positive</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="w-[92%] h-full bg-secondary shadow-[0_0_10px_rgba(0,108,73,0.3)]"></div>
+</div>
+<p class="text-[12px] text-on-surface-variant mt-3 text-center">42 Neighbors have verified this repair.</p>
+</div>
+</div>
+</div>
+<!-- Achievement Card -->
+<div class="achievement-card p-6 rounded-2xl shadow-lg flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-secondary-container rounded-full flex items-center justify-center mb-4 text-on-secondary-container shadow-inner">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<h3 class="font-headline-sm text-[20px] font-bold text-primary mb-1">Impact Reward</h3>
+<p class="text-on-surface-variant text-body-md">You've earned +50 Civic Points for participating in this verification!</p>
+<div class="mt-4 px-4 py-2 bg-primary text-white rounded-full text-label-md">Level 13 Progress: 85%</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 lg:hidden bg-surface/70 backdrop-blur-lg border-t border-white/10 shadow-lg rounded-t-xl">
+<a href="city_center.html" class="flex flex-col items-center justify-center text-on-surface-variant p-2 rounded-lg">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-[10px]">Home</span>
+</a>
+<a href="track.html" class="flex flex-col items-center justify-center text-secondary scale-110 p-2 rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-label-md text-[10px] font-bold">Reports</span>
+</a>
+<a href="report.html" class="flex flex-col items-center justify-center bg-primary text-white w-12 h-12 rounded-full -mt-8 shadow-xl">
+<span class="material-symbols-outlined">add_circle</span>
+</a>
+<a href="verify.html" class="flex flex-col items-center justify-center text-on-surface-variant p-2 rounded-lg">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-[10px]">Community</span>
+</a>
+<a href="profile.html" class="flex flex-col items-center justify-center text-on-surface-variant p-2 rounded-lg">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-md text-[10px]">Profile</span>
+</a>
+</nav>
+<script>
+        // Before/After Slider Logic
+        const container = document.getElementById('before-after-container');
+        const beforeImg = document.getElementById('before-image');
+        const handle = document.getElementById('slider-handle');
+
+        let isDragging = false;
+
+        const moveSlider = (e) => {
+            if (!isDragging) return;
+            const rect = container.getBoundingClientRect();
+            let x = (e.pageX || e.touches[0].pageX) - rect.left;
+            
+            if (x < 0) x = 0;
+            if (x > rect.width) x = rect.width;
+            
+            const percentage = (x / rect.width) * 100;
+            beforeImg.style.width = `${percentage}%`;
+            handle.style.left = `${percentage}%`;
+        };
+
+        container.addEventListener('mousedown', () => isDragging = true);
+        window.addEventListener('mouseup', () => isDragging = false);
+        window.addEventListener('mousemove', moveSlider);
+        
+        container.addEventListener('touchstart', () => isDragging = true);
+        window.addEventListener('touchend', () => isDragging = false);
+        window.addEventListener('touchmove', moveSlider);
+
+        // Confetti Celebration Effect
+        const canvas = document.getElementById('confetti');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height - canvas.height;
+                this.size = Math.random() * 8 + 4;
+                this.speedY = Math.random() * 3 + 2;
+                this.speedX = Math.random() * 2 - 1;
+                this.color = `hsl(${Math.random() * 360}, 70%, 60%)`;
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = Math.random() * 10 - 5;
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.rotation += this.rotationSpeed;
+                if (this.y > canvas.height) {
+                    this.y = -20;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation * Math.PI / 180);
+                ctx.fillStyle = this.color;
+                ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+                ctx.restore();
+            }
+        }
+
+        function initConfetti() {
+            for (let i = 0; i < 100; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        // Confetti controls
+        let confettiActive = false;
+
+        function initConfetti() {
+            particles = [];
+            for (let i = 0; i < 150; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            if (!confettiActive) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                return;
+            }
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        // Confirm Resolution logic
+        function confirmResolution() {
+            confettiActive = true;
+            initConfetti();
+            animate();
+
+            if (window.civicController) {
+                const report = window.civicController.state.reports.find(r => r.id === "#CC-8821");
+                if (report) {
+                    report.status = "Resolved";
+                    report.timeline.push({
+                        status: "Resolved Verified",
+                        date: "Just now",
+                        description: "Resolution confirmed by community verification."
+                    });
+                }
+                window.civicController.addXp(50);
+                window.civicController.toast("Resolution Confirmed!", "Thank you for confirming resolution. +50 XP earned!", "verified");
+                window.civicController.addActivity("verified", "Resolution Confirmed", "Confirmed successful pothole resolution on West 4th Avenue.");
+                window.civicController.save();
+            }
+
+            const confirmBtn = document.getElementById('confirm-btn');
+            confirmBtn.innerHTML = '<span class="material-symbols-outlined">check</span> Confirmed & Resolved';
+            confirmBtn.disabled = true;
+            confirmBtn.classList.replace('bg-secondary', 'bg-secondary/40');
+            document.getElementById('reopen-btn').disabled = true;
+
+            setTimeout(() => {
+                confettiActive = false;
+            }, 6000);
+        }
+
+        function reopenCase() {
+            if(confirm('Are you sure you want to reopen this case? This will alert city maintenance that the issue persists.')) {
+                const reopenBtn = document.getElementById('reopen-btn');
+                reopenBtn.innerHTML = '<span class="material-symbols-outlined">check</span> Case Reopened';
+                reopenBtn.classList.replace('bg-surface-container-highest', 'bg-error');
+                reopenBtn.classList.replace('text-on-surface-variant', 'text-white');
+                reopenBtn.disabled = true;
+                document.getElementById('confirm-btn').disabled = true;
+
+                if (window.civicController) {
+                    const report = window.civicController.state.reports.find(r => r.id === "#CC-8821");
+                    if (report) {
+                        report.status = "In Progress";
+                        report.timeline.push({
+                            status: "Reopened",
+                            date: "Just now",
+                            description: "Case reopened due to community feedback."
+                        });
+                        window.civicController.toast("Case Reopened", "Maintenance team notified.", "warning");
+                        window.civicController.addActivity("warning", "Case Reopened", "Flagged resolution of West 4th Avenue repair as incomplete.");
+                        window.civicController.save();
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="shared.js"></script>
+</body></html>

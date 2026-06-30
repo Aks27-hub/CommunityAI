@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>City Champion | Command Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9fb; }
+        .glass-surface {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .achievement-border {
+            border: 2px solid transparent;
+            background-image: linear-gradient(white, white), linear-gradient(to right, #006c49, #6cf8bb);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+        }
+        .map-gradient-overlay {
+            background: linear-gradient(180deg, rgba(247,249,251,0.9) 0%, rgba(247,249,251,0) 15%, rgba(247,249,251,0) 85%, rgba(247,249,251,0.9) 100%);
+        }
+        @keyframes pulse-soft {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+        .animate-pulse-soft { animation: pulse-soft 3s infinite ease-in-out; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#000000",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-container": "#eceef0",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "inverse-surface": "#2d3133",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "on-secondary-container": "#00714d",
+                        "primary-container": "#131b2e",
+                        "surface-dim": "#d8dadc",
+                        "on-surface-variant": "#45464d",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#2a1700",
+                        "on-tertiary-fixed": "#2a1700",
+                        "primary-fixed": "#dae2fd",
+                        "error": "#ba1a1a",
+                        "tertiary": "#000000",
+                        "surface-bright": "#f7f9fb",
+                        "inverse-primary": "#bec6e0",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-error": "#ffffff",
+                        "surface": "#f7f9fb",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#7c839b",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#002113",
+                        "outline-variant": "#c6c6cd",
+                        "surface-container-low": "#f2f4f6",
+                        "tertiary-fixed": "#ffddb8",
+                        "secondary": "#006c49",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-variant": "#e0e3e5",
+                        "on-primary-fixed": "#131b2e",
+                        "surface-container-high": "#e6e8ea",
+                        "outline": "#76777d",
+                        "on-surface": "#191c1e",
+                        "secondary-container": "#6cf8bb",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#565e74",
+                        "background": "#f7f9fb",
+                        "primary-fixed-dim": "#bec6e0",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-tertiary-container": "#b87500",
+                        "on-secondary-fixed-variant": "#005236"
+                    },
+                    "spacing": {
+                        "gutter": "20px",
+                        "sm": "16px",
+                        "base": "4px",
+                        "lg": "48px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "16px",
+                        "xl": "80px",
+                        "xs": "8px",
+                        "md": "24px"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-4 md:px-margin-desktop h-16 bg-surface/70 backdrop-blur-md border-b border-white/10 shadow-sm">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-primary">City Champion</span>
+<div class="hidden md:flex items-center ml-8 gap-6">
+<a class="text-secondary font-bold font-label-md" href="#">Dashboard</a>
+<a class="text-on-surface-variant hover:bg-surface-container-highest/50 transition-colors font-label-md px-2 py-1 rounded" href="#">Analytics</a>
+<a class="text-on-surface-variant hover:bg-surface-container-highest/50 transition-colors font-label-md px-2 py-1 rounded" href="#">Departments</a>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-full hover:bg-surface-container-highest/50 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">military_tech</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-highest/50 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">bolt</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a city administrator in a bright, modern office. The person is wearing a sharp, dark blazer over a crisp white shirt, exuding authority and approachability. The lighting is soft and natural, emphasizing a high-end, civic-tech aesthetic with neutral tones and a clean, minimalist background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvq3ojDqbE_5AZkzxjnDd5781GL_rqn2In0oAFBey_-bToAiKj30GoUnn7ds142jvhnvjL_c06EVuUascBiDKoXGKwWp6VoDpJm9R4OtztCPfzcNS1BRTA2ebJZFha66r6Z-af35b86vBhkn8VmE6Q-Jpw6gaeM8B07oWRd6379vN-2L_mYe3v4q8vD1g1KjEF9YYPiGT1HS-RK8PsXt9_l1X4PDkpnz3CUP9BV3tFrTz_Rsxz8LNNj2FgvmXLCh_at5E3OMTZyL0"/>
+</div>
+</div>
+</header>
+<!-- Side Navigation Bar (Desktop) -->
+<nav class="hidden lg:flex flex-col fixed left-0 top-0 h-screen w-64 bg-surface/80 backdrop-blur-xl border-r border-white/10 shadow-xl p-4 gap-2 pt-20">
+<div class="mb-6 px-4">
+<h2 class="font-headline-sm text-headline-sm font-black text-primary">Command Center</h2>
+<p class="text-on-surface-variant text-label-md">Civic Guardian Level 12</p>
+</div>
+<a href="city_center.html"
+class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-xl px-4 py-3 shadow-md transition-transform duration-300 ease-out hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md">Home</span>
+</a>
+<a href="report.html"
+class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high/50 px-4 py-3 rounded-xl transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="font-label-md">Report</span>
+</a>
+<a href="verify.html"
+class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high/50 px-4 py-3 rounded-xl transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md">Community</span>
+</a>
+<a href="track.html"
+class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high/50 px-4 py-3 rounded-xl transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md">Tracking</span>
+</a>
+<a href="profile.html"
+class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high/50 px-4 py-3 rounded-xl transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-md">Profile</span>
+</a>
+<div class="mt-auto pt-4 border-t border-outline-variant">
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high/50 px-4 py-3 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high/50 px-4 py-3 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md">Help</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-16 pb-24 md:pb-8 px-4 md:px-8 min-h-screen">
+<div class="max-w-7xl mx-auto space-y-8 py-8">
+<!-- Status Breakdown Cards (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="glass-surface p-6 rounded-3xl shadow-sm border border-white/20">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-surface-container-highest p-2 rounded-xl">
+<span class="material-symbols-outlined text-primary">pending_actions</span>
+</div>
+<span id="openReportsCount" class="text-headline-md font-bold">142</span>
+</div>
+<h3 class="text-on-surface-variant font-label-md uppercase tracking-wider">Open Reports</h3>
+<div class="mt-4 h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-2/3"></div>
+</div>
+</div>
+<div class="glass-surface p-6 rounded-3xl shadow-sm border border-white/20">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-secondary-container p-2 rounded-xl">
+<span class="material-symbols-outlined text-on-secondary-container">autorenew</span>
+</div>
+<span id="inProgressCount" class="text-headline-md font-bold">89</span>
+</div>
+<h3 class="text-on-surface-variant font-label-md uppercase tracking-wider">In Progress</h3>
+<div class="mt-4 h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-1/2"></div>
+</div>
+</div>
+<div class="achievement-border p-6 rounded-3xl shadow-lg">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-secondary p-2 rounded-xl">
+<span class="material-symbols-outlined text-white">task_alt</span>
+</div>
+<span id="resolvedReportsCount" class="text-headline-md font-bold">1,204</span>
+</div>
+<h3 class="text-on-surface-variant font-label-md uppercase tracking-wider">Resolved This Week</h3>
+<div class="mt-4 h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-full"></div>
+</div>
+</div>
+</div>
+<!-- Global Map & AI Prioritization -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+<!-- Map View (Level 2 Elevation) -->
+<div class="xl:col-span-2 relative h-[500px] rounded-3xl overflow-hidden shadow-xl group border border-white/10">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A high-fidelity digital map of a modern city center, showing a sophisticated heatmap overlay in varying shades of amber and teal. Interactive pins with subtle pulses mark critical infrastructure issues. The visual style is premium and data-heavy, resembling a government command center interface with clean lines and soft lighting." data-location="New York City" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCpm7_bf7O-1PeQQixD3c2fP-fKyGWsli64mF2EthUS3Y6fyyXil19eFmcNU-JQf45DBif_LluUgeM8pgPwUAOwjBENoT-lH6GtM7UAhO9B3-gA2q9XddHIwNT-rRjLJowy-N8H-0cZVI9Gp3zfeHSK4Cw76j_F16QdDXQNJX9f3Oc6vZj4hL6eYEI820Z8kUmOoZm9I5UVI2kSw1MisfW4SvaMli1JRKhDA4RgLWyegqNnTIXrvSYhNz8CK1paPkP5nd9HIf4CuYw')"></div>
+<div class="absolute inset-0 map-gradient-overlay pointer-events-none"></div>
+<div class="absolute top-4 left-4 flex gap-2">
+<div class="glass-surface px-4 py-2 rounded-full shadow-md flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-error animate-pulse"></div>
+<span class="text-label-md font-bold">Live Heatmap</span>
+</div>
+</div>
+<div class="absolute bottom-6 right-6 flex flex-col gap-2">
+<button class="w-12 h-12 rounded-full glass-surface shadow-xl flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+<button class="w-12 h-12 rounded-full glass-surface shadow-xl flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<button class="w-12 h-12 rounded-full bg-primary text-white shadow-xl flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">my_location</span>
+</button>
+</div>
+</div>
+<!-- AI Prioritization List -->
+<div class="glass-surface flex flex-col rounded-3xl border border-white/20 shadow-sm overflow-hidden h-[500px]">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center bg-white/30">
+<h2 class="font-headline-md text-headline-md">AI Insights</h2>
+<span class="bg-secondary-container/50 text-on-secondary-container px-3 py-1 rounded-full text-label-md font-bold animate-pulse-soft">Live</span>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-4">
+<!-- Priority Item 1 -->
+<div class="p-4 bg-white/50 rounded-2xl border border-white/30 hover:shadow-md transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-error/10 text-error px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest">Critical</span>
+<span class="text-on-surface-variant font-label-md">#RU-902</span>
+</div>
+<h4 class="font-bold text-on-surface mb-1">Water Main Leak</h4>
+<p class="text-on-surface-variant text-sm mb-3">5th Avenue &amp; Broadway</p>
+<div class="flex items-center gap-4 text-[12px] font-medium">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">groups</span> 12.4k Affected
+                                </div>
+<div class="flex items-center gap-1 text-error">
+<span class="material-symbols-outlined text-[16px]">warning</span> High Risk
+                                </div>
+</div>
+</div>
+<!-- Priority Item 2 -->
+<div class="p-4 bg-white/50 rounded-2xl border border-white/30 hover:shadow-md transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-on-tertiary-container/10 text-on-tertiary-container px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest">Medium</span>
+<span class="text-on-surface-variant font-label-md">#RU-884</span>
+</div>
+<h4 class="font-bold text-on-surface mb-1">Downed Power Line</h4>
+<p class="text-on-surface-variant text-sm mb-3">Oak Street Residential</p>
+<div class="flex items-center gap-4 text-[12px] font-medium">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">groups</span> 240 Affected
+                                </div>
+<div class="flex items-center gap-1 text-on-tertiary-container">
+<span class="material-symbols-outlined text-[16px]">warning</span> Elevated
+                                </div>
+</div>
+</div>
+<!-- Priority Item 3 -->
+<div class="p-4 bg-white/50 rounded-2xl border border-white/30 hover:shadow-md transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-secondary/10 text-secondary px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest">Routine</span>
+<span class="text-on-surface-variant font-label-md">#RU-712</span>
+</div>
+<h4 class="font-bold text-on-surface mb-1">Pothole Cluster</h4>
+<p class="text-on-surface-variant text-sm mb-3">Highway 101 Onramp</p>
+<div class="flex items-center gap-4 text-[12px] font-medium">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">groups</span> 5.1k Affected
+                                </div>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]">check_circle</span> Optimized
+                                </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Workflow & Department Assignment -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Unassigned Queue -->
+<div class="space-y-4">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h3 class="font-headline-md text-headline-md">Active Incidents</h3>
+<p class="text-on-surface-variant">Drag to assign departments</p>
+</div>
+<span id="pendingCountText" class="text-label-md font-bold text-on-surface-variant">12 PENDING</span>
+</div>
+<div id="incidentQueue" class="space-y-4 min-h-[300px]">
+<!-- Dynamic active incidents will render here -->
+</div>
+</div>
+<!-- Department Drops -->
+<div class="grid grid-cols-1 gap-4">
+<div class="dept-drop-zone p-6 rounded-3xl border-2 border-dashed border-outline-variant bg-surface-container/30 flex flex-col items-center justify-center min-h-[160px] group hover:border-secondary hover:bg-secondary-container/10 transition-all cursor-pointer" data-dept="Public Works">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-secondary mb-2">construction</span>
+<h4 class="font-bold text-on-surface-variant group-hover:text-secondary">Public Works</h4>
+<p class="text-sm text-on-surface-variant">8 active teams available</p>
+</div>
+<div class="dept-drop-zone p-6 rounded-3xl border-2 border-dashed border-outline-variant bg-surface-container/30 flex flex-col items-center justify-center min-h-[160px] group hover:border-secondary hover:bg-secondary-container/10 transition-all cursor-pointer" data-dept="Sanitation">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-secondary mb-2">delete_sweep</span>
+<h4 class="font-bold text-on-surface-variant group-hover:text-secondary">Sanitation</h4>
+<p class="text-sm text-on-surface-variant">3 teams on standby</p>
+</div>
+<div class="dept-drop-zone p-6 rounded-3xl border-2 border-dashed border-outline-variant bg-surface-container/30 flex flex-col items-center justify-center min-h-[160px] group hover:border-secondary hover:bg-secondary-container/10 transition-all cursor-pointer" data-dept="Parks & Recreation">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-secondary mb-2">forest</span>
+<h4 class="font-bold text-on-surface-variant group-hover:text-secondary">Parks &amp; Recreation</h4>
+<p class="text-sm text-on-surface-variant">All teams currently deployed</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 lg:hidden bg-surface/70 backdrop-blur-lg border-t border-white/10 shadow-lg rounded-t-xl">
+<a href="city_center.html" class="flex flex-col items-center justify-center text-secondary scale-110 transition-transform">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-[10px]">Home</span>
+</a>
+<a href="report.html" class="flex flex-col items-center justify-center text-on-surface-variant p-2 rounded-lg transition-transform active:scale-90 duration-200">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="font-label-md text-[10px]">Report</span>
+</a>
+<a href="verify.html" class="flex flex-col items-center justify-center text-on-surface-variant p-2 rounded-lg transition-transform active:scale-90 duration-200">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-[10px]">Community</span>
+</a>
+<a href="track.html" class="flex flex-col items-center justify-center text-on-surface-variant p-2 rounded-lg transition-transform active:scale-90 duration-200">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-[10px]">Tracking</span>
+</a>
+<a href="profile.html" class="flex flex-col items-center justify-center text-on-surface-variant p-2 rounded-lg transition-transform active:scale-90 duration-200">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-md text-[10px]">Profile</span>
+</a>
+</nav>
+<script src="shared.js"></script>
+<script>
+        // Dynamic Renderer & Drag/Drop implementation
+        function renderIncidents(state) {
+            const queue = document.getElementById('incidentQueue');
+            const unassigned = state.reports.filter(r => r.status === 'Reported');
+            
+            document.getElementById('pendingCountText').textContent = `${unassigned.length} PENDING`;
+            
+            // Update summary metrics
+            document.getElementById('openReportsCount').textContent = 138 + state.reports.filter(r => r.status === 'Reported').length;
+            document.getElementById('inProgressCount').textContent = 86 + state.reports.filter(r => r.status === 'In Progress').length;
+            document.getElementById('resolvedReportsCount').textContent = "1,204"; // static baseline
+
+            queue.innerHTML = '';
+            if (unassigned.length === 0) {
+                queue.innerHTML = `
+                    <div class="flex flex-col items-center justify-center p-8 bg-surface-container/20 border border-outline-variant/30 rounded-2xl text-center w-full">
+                        <span class="material-symbols-outlined text-4xl text-secondary mb-2">task_alt</span>
+                        <h4 class="font-bold text-primary">All Clear</h4>
+                        <p class="text-xs text-on-surface-variant mt-1">No unassigned active incidents in the district.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            unassigned.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'glass-surface p-5 rounded-2xl border border-white/20 shadow-sm cursor-grab active:cursor-grabbing hover:translate-y-[-2px] transition-all';
+                card.draggable = true;
+                card.setAttribute('data-id', item.id);
+                
+                // Mock image thumbnail
+                const thumbnail = item.img || "https://lh3.googleusercontent.com/aida-public/AB6AXuCzJK6vtXFR42kU4xR8Gt8C4J4iJB4Fmo01SLmnljADRoYKe6reQgKM7Kwe7DBnWG2fmi-FoghcHvDNvQ-KGXjZTEGcmqutZtTUPxVjypVbzEs_eWKzYHhcOAym1iJvXbyOVZlASjpm3kziyW8FVFxOq4r9RatYGCZcfd7IGxhVCpSrOeLA9IW6nQLI-4hTpzJCUCeFRuq1XTibtWJCQ3BQXceh2oN6BxCltInQmn-asG_gsQ-aS0zu1hClKVXvommB9cOF40DgTSE";
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h4 class="font-bold text-lg">${item.title}</h4>
+                            <p class="text-on-surface-variant text-sm">Reported by @${item.reporter || 'citizen'}</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-error font-bold flex items-center justify-end gap-1">
+                                <span class="material-symbols-outlined text-[18px]">timer</span>
+                                <span>24:12:05</span>
+                            </div>
+                            <span class="text-[10px] text-on-surface-variant uppercase font-bold tracking-tighter">SLA Countdown</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="flex -space-x-2">
+                            <div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container overflow-hidden">
+                                <img class="w-full h-full object-cover" src="${thumbnail}"/>
+                            </div>
+                            <div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container overflow-hidden flex items-center justify-center text-[10px] font-bold">
+                                +1
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="bg-surface-container-highest px-3 py-1 rounded-full text-xs font-bold uppercase">${item.category.replace(' Infrastructure','').replace(' Safety','')}?</span>
+                            <button class="p-2 hover:bg-surface-container-highest rounded-lg">
+                                <span class="material-symbols-outlined">drag_indicator</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                card.addEventListener('dragstart', (e) => {
+                    e.dataTransfer.setData('text/plain', item.id);
+                    card.style.opacity = '0.5';
+                    card.style.scale = '0.98';
+                });
+
+                card.addEventListener('dragend', () => {
+                    card.style.opacity = '1';
+                    card.style.scale = '1';
+                });
+
+                queue.appendChild(card);
+            });
+        }
+
+        // State synchronization callback
+        window.onCivicStateSync = function(state) {
+            renderIncidents(state);
+        };
+
+        // Setup drag and drop targets
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropZones = document.querySelectorAll('.dept-drop-zone');
+
+            dropZones.forEach(zone => {
+                zone.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    zone.classList.add('border-secondary', 'bg-secondary-container/10');
+                });
+
+                zone.addEventListener('dragenter', (e) => {
+                    e.preventDefault();
+                });
+
+                zone.addEventListener('dragleave', () => {
+                    zone.classList.remove('border-secondary', 'bg-secondary-container/10');
+                });
+
+                zone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    zone.classList.remove('border-secondary', 'bg-secondary-container/10');
+                    
+                    const reportId = e.dataTransfer.getData('text/plain');
+                    const deptName = zone.getAttribute('data-dept');
+                    
+                    if (reportId && window.civicController) {
+                        window.civicController.assignReportDepartment(reportId, deptName);
+                    }
+                });
+            });
+        });
+    </script>
+</body></html>
